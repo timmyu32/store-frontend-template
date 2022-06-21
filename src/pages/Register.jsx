@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { useRef, useEffect } from 'react';
 import axios from 'axios';
 import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
+import {useNavigate} from 'react-router-dom';
+
 
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
@@ -94,6 +95,8 @@ const Register = (props) => {
     const pWordRef = useRef(null);
     const confirmRef = useRef(null);
     const secretKeyRef = useRef(null);
+    const history = useNavigate();
+
 
 
      const handleClick = () => {
@@ -135,7 +138,7 @@ const Register = (props) => {
                 password: pWordRef.current.value,
               })
               .then(res => {
-                window.location = '/login';
+                history('/login');
               })
               .catch(err => console.log(err));
             }
