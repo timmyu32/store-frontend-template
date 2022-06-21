@@ -28,7 +28,7 @@ function App() {
           {user.currentUser && user.currentUser.message == 'user logged in' ?
           <Route path='/login' exact element={<Home />} />
           :
-          <Route path='/login' exact element={<SignIn />} />
+          <Route path='/login' exact element={<LogIn />} />
 
           }
           <Route path='/register' exact element={<Register type={'regular'}/>} />
