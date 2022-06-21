@@ -21,7 +21,7 @@ const Products = (props) => {
     }, []);
 
     const getPopularItems = async () => {
-        await axios.get("http://127.0.0.1:8000/api/pp/"+props.limit).then(res => {
+        await axios.get("https://depop-shop-api-v1.herokuapp.com/api/pp/"+props.limit).then(res => {
         setData(res.data.pp);
         }).catch(err => console.log(err));
         

@@ -130,7 +130,7 @@ const Product = (props) => {
     }, []);
 
     const getItems = async () => {
-        await axios.get("http://127.0.0.1:8000/api/product/"+ id).then(res => {
+        await axios.get("https://depop-shop-api-v1.herokuapp.com/api/product/"+ id).then(res => {
         setData(res.data.product[0]);
         // console.log()
         setFData({

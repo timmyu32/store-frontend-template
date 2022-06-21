@@ -55,12 +55,12 @@ const ProductList = (props) => {
     useEffect(() =>{
         window.scrollTo(0, 0);
         getMeta();
-        getQueriedProducts();
+        // getQueriedProducts();
     }, []);
 
 
     const getQueriedProducts = () => {
-        axios.get("http://127.0.0.1:8000/api/pp?style=vintage").then(res => {
+        axios.get("https://depop-shop-api-v1.herokuapp.com/api/pp?style=vintage").then(res => {
             console.log(res)
         }).catch(err => (console.log(err)));
     };
@@ -68,7 +68,7 @@ const ProductList = (props) => {
 
     const getMeta = async () => {
         try {
-            await axios.get("http://127.0.0.1:8000/api/products/metadata").then(res => {
+            await axios.get("https://depop-shop-api-v1.herokuapp.com/api/products/metadata").then(res => {
             setColorList(res.data.colors);
             setStyleList(res.data.styles);
             setSizeList(res.data.sizes);

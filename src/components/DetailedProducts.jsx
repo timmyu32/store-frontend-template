@@ -28,13 +28,13 @@ const DetailedProducts = (props) => {
         try {
             const path = window.location.pathname.split('search/')
             if (path.length > 1){
-                await axios.get("http://127.0.0.1:8000/api/search/"+path[1]).then(res => {
+                await axios.get("https://depop-shop-api-v1.herokuapp.com/api/search/"+path[1]).then(res => {
                 setData(res.data.product);
                 // console.log(props);
                 console.log(res.data.product);
                 }).catch(err => console.log(err));
             }else{
-                await axios.get("http://127.0.0.1:8000/api/pp/"+props.limit).then(res => {
+                await axios.get("https://depop-shop-api-v1.herokuapp.com/api/pp/"+props.limit).then(res => {
                 setData(res.data.pp);
                 // console.log(props);
                 // console.log(res.data.pp[0]);
@@ -42,7 +42,7 @@ const DetailedProducts = (props) => {
             }
       
         } catch (error) {
-            await axios.get("http://127.0.0.1:8000/api/pp/"+props.limit).then(res => {
+            await axios.get("https://depop-shop-api-v1.herokuapp.com/api/pp/"+props.limit).then(res => {
             setData(res.data.pp);
             // console.log(props);
             // console.log(res.data.pp[0]);

@@ -110,7 +110,7 @@ const Slider = () => {
     }, []);
 
     const getSliderData = async () => {
-        await axios.get("http://127.0.0.1:8000/api/slider/3").then(res => {
+        await axios.get("https://depop-shop-api-v1.herokuapp.com/api/slider/3").then(res => {
         setData(res.data.sliderData);
         // console.log(res.data.sliderData);
         }).catch(err => console.log(err));

@@ -106,7 +106,7 @@ const SignIn = () => {
 
           // console.log(data)
 
-          axios.post("http://127.0.0.1:8000/api/login", {
+          axios.post("https://depop-shop-api-v1.herokuapp.com/api/login", {
               username: uNameRef.current.value,
               password: pWordRef.current.value,
           }).then(res => {

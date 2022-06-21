@@ -20,7 +20,7 @@ const Categories = () => {
   }, []);
 
   const get3Categories = async () => {
-    await axios.get("http://127.0.0.1:8000/api/categories/3").then(res => {
+    await axios.get("https://depop-shop-api-v1.herokuapp.com/api/categories/3").then(res => {
     setData(res.data.categories);
     // console.log(res.data.categories);
     }).catch(err => console.log(err));

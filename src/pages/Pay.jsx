@@ -14,7 +14,7 @@ const Pay = () => {
   useEffect(() =>{
     const makeRequest = async () => {
       try {
-        const res = await axios.post('http://127.0.0.1:8000/api/stripe/payment',  
+        const res = await axios.post('https://depop-shop-api-v1.herokuapp.com/api/stripe/payment',  
         {
           tokenID: stripeToken.id,
           amount: 2000

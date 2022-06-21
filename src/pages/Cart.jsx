@@ -225,7 +225,7 @@ const Cart = () => {
     }
 
     const applyDiscount = async (code) => {
-        const res = await axios.get('http://127.0.0.1:8000/api/codes/'+code)
+        const res = await axios.get('https://depop-shop-api-v1.herokuapp.com/api/codes/'+code)
         if (res.data.discount == null) {
             setDiscountAmount('incorrect code')            
         }else{
@@ -246,7 +246,7 @@ const Cart = () => {
         setIsItemInCart(true);
         const makeRequest = async () => {
             try {
-              const res = await axios.post('http://127.0.0.1:8000/api/stripe/payment',  
+              const res = await axios.post('https://depop-shop-api-v1.herokuapp.com/api/stripe/payment',  
               {
                 tokenID: stripeToken.id,
                 amount: typeof discountAmount == 'number' ? roundToTwo(cart.total * ((100-discountAmount)/100) )*100 : roundToTwo(cart.total)*100 ,

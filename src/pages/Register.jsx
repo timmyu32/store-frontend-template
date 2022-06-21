@@ -109,7 +109,7 @@ const Register = (props) => {
 
             console.log(window.location.pathname)
             if(window.location.pathname == '/register/admin'){
-              axios.post("http://127.0.0.1:8000/api/register/admin", {
+              axios.post("https://depop-shop-api-v1.herokuapp.com/api/register/admin", {
                 firstname: fNameRef.current.value,
                 lastname: lNameRef.current.value,
                 username: uNameRef.current.value,
@@ -127,7 +127,7 @@ const Register = (props) => {
               })
               .catch(err => console.log(err));
             }else{
-              axios.post("http://127.0.0.1:8000/api/register", {
+              axios.post("https://depop-shop-api-v1.herokuapp.com/api/register", {
                 firstname: fNameRef.current.value,
                 lastname: lNameRef.current.value,
                 username: uNameRef.current.value,

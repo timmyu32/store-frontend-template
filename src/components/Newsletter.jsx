@@ -67,7 +67,7 @@ const Newsletter = () => {
 
     console.log(emailRef.current.value)
     try {
-        const res = await axios.post('http://127.0.0.1:8000/api/newsletter/addMember',  
+        const res = await axios.post('https://depop-shop-api-v1.herokuapp.com/api/newsletter/addMember',  
         {
           email: emailRef.current.value,
         });
