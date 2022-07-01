@@ -1,0 +1,116 @@
+.shipItem{
+
+    display: flex;
+    width: 100%;
+
+    .container{
+        flex: 6;
+
+        .infoContainer{
+            display: flex;
+
+        .left{
+            -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.43); 
+            box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.43);
+            padding: 10px;
+            margin: 20px;
+            flex: 2;
+            height: 250px;
+            border-radius: 10px;
+         
+        
+
+
+            .itemDetails{
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+
+                .orderID{
+                    font-size: 20px;
+                    margin-bottom: 20px;
+                }
+                .address, .name{
+                    font-size: 20px;
+                    margin-bottom: 5px;
+                }
+
+            }
+        }
+
+        .right{
+            -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.43); 
+            box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.43);
+            padding: 10px;
+            margin: 20px;
+            border-radius: 10px;
+            height: 250px;
+            flex: 5;
+            display: flex;
+
+
+           .rightLeft{
+            flex: 1;
+           }
+           .rightRight{
+            flex: 4;
+            
+            .formContainer{
+                font-size: 16px;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+
+                .inputs{
+                    margin-top: 60px;
+                    justify-content: left;
+                    .formInput{
+                        padding-bottom: 5px;
+                        
+                        label{
+                            font-weight: 600;
+                        }
+
+                        input{
+                            border-top: none;
+                            border-left: none;
+                            border-right: none;
+                            border-bottom: 1px solid black;
+                            outline: none;
+                            padding: 5px;
+                            font-size: 18px;
+
+                            
+                        }
+                        
+                    }
+                }
+
+                button{
+                    background-color: #7451f8;
+                    color: white;
+                    font-size: 14px;
+                    font-weight: bold;
+                    padding: 4px;
+                    margin-top: 5px;
+                    border: 2px solid rgb(37, 36, 36);
+                    cursor: pointer;
+                    transition: 0.25s all ease;
+
+                    &:hover{
+                        color: #7451f8;
+                        background-color: gray;
+                    }
+                }
+            }
+
+            }
+
+
+        }
+    }
+        
+       
+
+    }
+}

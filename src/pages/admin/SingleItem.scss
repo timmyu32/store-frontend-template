@@ -1,0 +1,91 @@
+.singleItem{
+    display: flex;
+    width: 100%;
+    
+
+    .listContainer{
+        flex: 6;
+
+        .top{
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+
+            .topLeft{
+                flex: 1;
+                -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.43); 
+                box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.43);
+                padding: 20px;
+                position: relative;
+
+                .editButtom{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    padding: 5px;
+                    font-size: 12px;
+                    color: purple;
+                    background-color: rgba(128, 0, 128, 0.226);
+                    cursor: pointer;
+                    border-radius: 0 0 0 5px;
+                }
+                
+                .item{
+                    display: flex;
+                    gap: 20px;
+                        
+                    .itemImg{
+                        width: 130px;
+                        height: 200px;
+
+                    }
+
+                    .details{
+                        .itemTitle{
+                            margin-bottom: 10px;
+                            color: #555;
+                            
+                        }
+
+                        .detailItem{
+                            margin-bottom: 10px;
+                            font-size: 14px;
+
+                            .itemKey{
+                                font-weight: bold;
+                                color: gray;
+                                margin-right: 5px;
+                            }
+                            .itemValue{
+                                font-weight: 300;
+                            }
+                        }
+
+                    }
+
+                 
+
+
+                }       
+            
+                .title{
+                    margin-bottom: 10px;
+                    color: gray;
+                }
+            }
+            .topRight{
+                flex: 2;
+                
+            }
+        }
+
+        .bottom{
+            .title{
+                color: gray;
+                padding-left: 20px;
+            }
+        }
+        
+    
+    }
+}

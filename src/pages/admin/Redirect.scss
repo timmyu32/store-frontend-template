@@ -1,0 +1,24 @@
+.redirect{
+    display: flex;
+    width: 100%;
+
+
+    .container{
+        flex: 6;
+        position: relative;
+
+        .loader{
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            
+        }
+       
+    }
+
+    
+}

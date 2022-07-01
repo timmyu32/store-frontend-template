@@ -46,9 +46,9 @@ const Home = () => {
 
   }
 
-  console.log(isOpen)
-  console.log(user)
-  console.log(user.initialPopUpShown)
+  // console.log(isOpen)
+  // console.log(user)
+  // console.log(user.initialPopUpShown)
 
   return (
     <div>

@@ -106,11 +106,11 @@ const SignIn = () => {
 
           // console.log(data)
 
-          axios.post("https://depop-shop-api-v1.herokuapp.com/api/login", {
+          axios.post(process.env.REACT_APP_API_URL + "/api/login", {
               username: uNameRef.current.value,
               password: pWordRef.current.value,
           }).then(res => {
-          console.log(res);
+          // console.log(res);
           dispatch(loginSuccess(res.data))
           history('/', res.data)   
           }).catch(err => alert('Incorrect Credentials'));

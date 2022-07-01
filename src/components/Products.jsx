@@ -3,6 +3,8 @@ import axios from "axios";
 import styled from 'styled-components';
 import { popularProducts } from '../data';
 import Product from './Product';
+import { ThreeDots,  } from  'react-loader-spinner'
+
 
 
 const Container = styled.div`
@@ -15,14 +17,18 @@ const Container = styled.div`
 
 const Products = (props) => {
     const [data, setData] = useState([]);
+    const [dataFetched, setDataFetched] = useState(false); 
+
+
 
     useEffect(() =>{
         getPopularItems();
     }, []);
 
     const getPopularItems = async () => {
-        await axios.get("https://depop-shop-api-v1.herokuapp.com/api/pp/"+props.limit).then(res => {
+        await axios.get(process.env.REACT_APP_API_URL + "/api/pp/"+props.limit).then(res => {
         setData(res.data.pp);
+        setDataFetched(true);
         }).catch(err => console.log(err));
         
     }
@@ -30,9 +36,13 @@ const Products = (props) => {
 
   return (
     <Container>
-        {data.map(item => (
+        {dataFetched?
+        data.map(item => (
             <Product item={item} key={item.id}/>
-        ))}
+        ))
+        :
+        <ThreeDots color="black" height={80} width={80} />}
+        
     </Container>
       
   )

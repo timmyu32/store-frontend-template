@@ -4,9 +4,17 @@ import Product from './pages/Product';
 import Cart from './pages/Cart';
 import Register from './pages/Register';
 import SignIn from './pages/LogIn';
-import Success from './pages/Success';
-import Pay from './pages/Pay';
+//Admin Pages
+import AdminHome from './pages/admin/AdminHome';
+import List from './pages/admin/List';
+import NewItem from './pages/admin/NewItem';
+import SingleItem from './pages/admin/SingleItem';
+import ShipItem from './pages/admin/ShipItem';
+import OrderDetails from './pages/admin/OrderDetails'
+import Redirect from './pages/admin/Redirect'
+import ModifyProduct from './pages/admin/ModifyProduct'
 import { useDispatch, useSelector } from 'react-redux';
+
 
 
 
@@ -15,11 +23,15 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const user = useSelector(state => state.user);
+  const mql = window.matchMedia('(max-width: 600px)');
+
+  let mobileView = mql.matches;
 
 
   return (
     <Router>
       <div className="App">
+        {mobileView ? <>
         <Routes>
           <Route index element={<Home />} />
           <Route path='/products' exact element={<ProductList />} />
@@ -33,8 +45,59 @@ function App() {
           <Route path='/register' exact element={<Register type={'regular'}/>} />
           <Route path='/register/admin' exact element={<Register type={'admin'}/>} />
           <Route path='/search/:term' exact element={<ProductList />} />
-          <Route path='/success' exact element={<Success />} />
+          {user.currentUser && user.currentUser.user.isAdmin?
+          <>
+          <Route path='/admin' exact element={<AdminHome/>} />
+          <Route path='/admin/list/:listType' exact element={<List/>} />
+          <Route path='/admin/redirect/:listType' exact element={<Redirect/>} />
+          <Route path='/admin/new-item' exact element={<NewItem/>} />
+          <Route path='/admin/single-item' exact element={<SingleItem/>} />
+          <Route path='/admin/add-shipping/:orderID' exact element={<ShipItem/>} />
+          <Route path='/admin/order/:orderID' exact element={<OrderDetails/>} />
+          <Route path='/admin/modify/:productID' exact element={<ModifyProduct/>} />
+          
+          </>
+            :
+            <></>
+          }
+
         </Routes>
+        </>        
+        : 
+        <>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path='/products' exact element={<ProductList />} />
+          <Route path='/product/:id' exact element={<Product/>} />
+          <Route path='/cart' exact element={<Cart />} />
+          {user.currentUser && user.currentUser.message == 'user logged in' ?
+          <Route path='/login' exact element={<Home />} />
+          :
+          <Route path='/login' exact element={<SignIn />} />
+          }
+          <Route path='/register' exact element={<Register type={'regular'}/>} />
+          <Route path='/register/admin' exact element={<Register type={'admin'}/>} />
+          <Route path='/search/:term' exact element={<ProductList />} />
+          {user.currentUser && user.currentUser.user.isAdmin?
+          <>
+          <Route path='/admin' exact element={<AdminHome/>} />
+          <Route path='/admin/list/:listType' exact element={<List/>} />
+          <Route path='/admin/redirect/:listType' exact element={<Redirect/>} />
+          <Route path='/admin/new-item' exact element={<NewItem/>} />
+          <Route path='/admin/single-item' exact element={<SingleItem/>} />
+          <Route path='/admin/add-shipping/:orderID' exact element={<ShipItem/>} />
+          <Route path='/admin/order/:orderID' exact element={<OrderDetails/>} />
+          <Route path='/admin/modify/:productID' exact element={<ModifyProduct/>} />
+          
+          </>
+            :
+            <></>
+          }
+
+        </Routes>
+        </>
+        }
+
       </div>
     </Router>
   );

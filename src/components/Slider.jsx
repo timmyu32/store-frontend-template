@@ -3,6 +3,7 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { ThreeDots,  } from  'react-loader-spinner'
 
 
 const Container = styled.div`
@@ -93,6 +94,8 @@ const Button = styled.button`
 
 const Slider = () => {
     const [slideIndex, setSlideIndex] = useState(0); 
+    const [dataFetched, setDataFetched] = useState(false); 
+
     const handleClick = (direction) => {
 
         if (direction == "left"){
@@ -110,8 +113,10 @@ const Slider = () => {
     }, []);
 
     const getSliderData = async () => {
-        await axios.get("https://depop-shop-api-v1.herokuapp.com/api/slider/3").then(res => {
+        await axios.get(process.env.REACT_APP_API_URL + "/api/slider/3").then(res => {
         setData(res.data.sliderData);
+        setDataFetched(true)
+        
         // console.log(res.data.sliderData);
         }).catch(err => console.log(err));
         
@@ -128,10 +133,14 @@ const Slider = () => {
         <Arrow direction="left" onClick={()=>handleClick("left")}>
             <BiLeftArrowAlt/>
         </Arrow>
+
         <Wrapper slideIndex={slideIndex}>
+
             {data.map(item => (
                 <Slide bg={item.bg}>
-                <ImageContainer>
+                    {dataFetched ? <>
+                    
+                    <ImageContainer>
                     <Image src={item.img}/>
                 </ImageContainer>
                 <InfoContainer id={item.img}>
@@ -141,6 +150,9 @@ const Slider = () => {
                         <Button>DETAILS</Button>
                     </Link>
                 </InfoContainer>
+                </> : <ThreeDots color="black" height={80} width={80} />}
+
+                
             </Slide>
 
             ))}

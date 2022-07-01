@@ -225,7 +225,7 @@ const Cart = () => {
     }
 
     const applyDiscount = async (code) => {
-        const res = await axios.get('https://depop-shop-api-v1.herokuapp.com/api/codes/'+code)
+        const res = await axios.get(process.env.REACT_APP_API_URL + '/api/codes/'+code)
         if (res.data.discount == null) {
             setDiscountAmount('incorrect code')            
         }else{
@@ -241,18 +241,42 @@ const Cart = () => {
         setIsOpen(!isOpen);
 
     }
+
+    const sendOrderDetails = (res) => {
+        const orderDetails = {
+            billingAddress: res.data.tranaction.billing_details.address,
+            firstName: user.currentUser.user.firstname,
+            lastName: user.currentUser.user.lastname,
+            email: user.currentUser.user.email,
+            products: cart.products,
+            amount: res.data.tranaction.amount,
+            isShipped: false
+          }
+        //   console.log(orderDetails);
+          const res2 = axios.post(process.env.REACT_APP_API_URL + '/api/order/create',
+          {
+            order: orderDetails
+          });
+
+    }
+
+
     useEffect(() =>{
         window.scrollTo(0, 0);
         setIsItemInCart(true);
         const makeRequest = async () => {
+
             try {
-              const res = await axios.post('https://depop-shop-api-v1.herokuapp.com/api/stripe/payment',  
+              const res = await axios.post(process.env.REACT_APP_API_URL + '/api/stripe/payment',  
               {
                 tokenID: stripeToken.id,
                 amount: typeof discountAmount == 'number' ? roundToTwo(cart.total * ((100-discountAmount)/100) )*100 : roundToTwo(cart.total)*100 ,
               });
-              console.log(res.data)
-              seXact(res.data)
+            //   console.log(res.data)
+            //   seXact(res.data.tranaction);
+            //   console.log(res.data.tranaction);
+              sendOrderDetails(res)
+
               dispatch(emptyCart())
             //   history('/success', res.data)   
 
@@ -289,11 +313,12 @@ const Cart = () => {
                     {cart.products.map(product => (
                     <Product>
                         <ProductDetails>
-                            <Image src={product.img}/>
+                            <Link to={`/product/${product.id}`}>
+                                <Image style={{cursor:'pointer'}} src={product.img}/>
+                            </Link>
                             <Details>
                                 <ProductName><b>Item: </b>{product.title}</ProductName>
                                 <ProductID><b>ID: </b>{product.id}</ProductID>
-                                <ProductSize><b>Size: </b>L</ProductSize>
                             </Details>
                         </ProductDetails>
                         <PriceDetails>

@@ -8,10 +8,12 @@ import Footer from '../components/Footer';
 import DetailedProducts from '../components/DetailedProducts';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
+
 
 
 const Container = styled.div`
-
+    width: 100%
 `;
 
 const Container2 = styled.div`
@@ -51,6 +53,7 @@ const ProductList = (props) => {
     const [styleList, setStyleList] = useState([]);
     const [sizeList, setSizeList] = useState([]);
     const [filters, setFilters] = useState({});
+    const history = useNavigate();
 
     useEffect(() =>{
         window.scrollTo(0, 0);
@@ -60,7 +63,7 @@ const ProductList = (props) => {
 
 
     const getQueriedProducts = () => {
-        axios.get("https://depop-shop-api-v1.herokuapp.com/api/pp?style=vintage").then(res => {
+        axios.get(process.env.REACT_APP_API_URL + "/api/pp?style=vintage").then(res => {
             console.log(res)
         }).catch(err => (console.log(err)));
     };
@@ -68,7 +71,7 @@ const ProductList = (props) => {
 
     const getMeta = async () => {
         try {
-            await axios.get("https://depop-shop-api-v1.herokuapp.com/api/products/metadata").then(res => {
+            await axios.get(process.env.REACT_APP_API_URL + "/api/products/metadata").then(res => {
             setColorList(res.data.colors);
             setStyleList(res.data.styles);
             setSizeList(res.data.sizes);
@@ -87,8 +90,13 @@ const ProductList = (props) => {
             ...filters,
             [e.target.name]: value,
         })
+        console.log("/search/" + e.target.name +'=' + e.target.value);
+        history("/search/" + e.target.name +'=' + e.target.value.toLowerCase());
+        window.location.reload(false);
+
 
     };
+    
     // console.log(filters);
 
   return (
@@ -102,9 +110,9 @@ const ProductList = (props) => {
         <FilterContainer>
             <Container2>
             <Filter><FilterText>Filter Products</FilterText></Filter>
-            <Select name="color" onChange={handleFilter}>
+            <Select name="colour" onChange={handleFilter}>
                 <Option disabled selected>
-                    Color
+                    Colour
                 </Option>
                 {colorList.map(color => (<Option>{color}</Option>))}
             </Select>

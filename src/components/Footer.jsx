@@ -5,11 +5,17 @@ import { ImInstagram } from "react-icons/im";
 import { BsTwitter } from "react-icons/bs";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
+import { Link } from 'react-router-dom';
+
 
 const Container = styled.div`
     display: flex;
     color: white;
     background-color: black;
+    a:visited { text-decoration: none; color: white;}
+    a:link { text-decoration: none; }color: white;
+    a:hover { text-decoration: none; color: white;}
+    a:active { text-decoration: none; color: white;}
 
 `;
 
@@ -93,22 +99,30 @@ const Footer = () => {
                 iure nemo vitae atque labore nam totam, quidem maiores, molestiae aspernatur.
             </Desc>
             <SocialContainer>
-                <SocialIcon color='3B5999'>
+                {/* <SocialIcon color='3B5999'>
                     <AiFillFacebook/>
-                </SocialIcon>
+                </SocialIcon> */}
                 <SocialIcon color='E4405F'>
                     <ImInstagram/>
                 </SocialIcon>
-                <SocialIcon color='55ACEE'>
+                {/* <SocialIcon color='55ACEE'>
                     <BsTwitter/>
-                </SocialIcon>
+                </SocialIcon> */}
             </SocialContainer>
         </Left>
         <Center>
             <Title>Useful Links</Title>
             <List>
-                <ListItem>Home</ListItem>
-                <ListItem>Cart</ListItem>
+                    <ListItem style={{textDecoration:'underline'}}>
+                        <Link to='/'>
+                            Home
+                        </Link>
+                    </ListItem>
+                    <ListItem style={{textDecoration:'underline'}}>
+                        <Link to='/cart'>
+                            Cart
+                        </Link>                    
+                    </ListItem>
                 <ListItem>Terms </ListItem>
             </List>
         </Center>

@@ -112,7 +112,7 @@ const Register = (props) => {
 
             console.log(window.location.pathname)
             if(window.location.pathname == '/register/admin'){
-              axios.post("https://depop-shop-api-v1.herokuapp.com/api/register/admin", {
+              axios.post(process.env.REACT_APP_API_URL + "/api/register/admin", {
                 firstname: fNameRef.current.value,
                 lastname: lNameRef.current.value,
                 username: uNameRef.current.value,
@@ -130,7 +130,7 @@ const Register = (props) => {
               })
               .catch(err => console.log(err));
             }else{
-              axios.post("https://depop-shop-api-v1.herokuapp.com/api/register", {
+              axios.post(process.env.REACT_APP_API_URL + "/api/register", {
                 firstname: fNameRef.current.value,
                 lastname: lNameRef.current.value,
                 username: uNameRef.current.value,

@@ -1,0 +1,39 @@
+.adminHome{
+    display: flex;
+    
+    a:link { text-decoration: none; }
+    a:hover { text-decoration: none; }
+    a:active { text-decoration: none; }
+
+    .homeContainer{
+        flex: 6;
+        
+        .widgets{
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+        }
+        .charts{
+            padding: 20px;
+            gap: 20px;
+            display: flex;
+        }
+
+        .listContainer{
+            -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.43); 
+            box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.43);
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .listTitle{
+            font-weight: 500;
+            color: gray;
+            margin-bottom: 15px;
+        }
+
+    
+    }
+
+    
+}

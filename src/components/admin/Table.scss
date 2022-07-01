@@ -1,0 +1,11 @@
+.table{
+    
+    .status{
+        font-weight: bold;    
+        
+        &.Shipped{
+            color: green;
+            background-color: rgba($color: #08df483d, $alpha: 1.0);
+        }
+    }
+}

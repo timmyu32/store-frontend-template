@@ -116,10 +116,11 @@ const Product = (props) => {
     const [quantity, setQuantity] = useState(0);
     const [currentPhoto, setCurrentPhoto] = useState(null);
     const [isItemInCart, setIsItemInCart] = useState(false);
+    const [dataLoaded, setDataLoaded] = useState(false)
 
     const dispatch = useDispatch();
     const itemsInCart = useSelector(state => state.cart.itemsInCart);
-    console.log(itemsInCart)
+    // console.log(itemsInCart)
 
     const { id } = useParams();
 
@@ -130,19 +131,20 @@ const Product = (props) => {
     }, []);
 
     const getItems = async () => {
-        await axios.get("https://depop-shop-api-v1.herokuapp.com/api/product/"+ id).then(res => {
+        await axios.get(process.env.REACT_APP_API_URL + "/api/product/"+ id).then(res => {
         setData(res.data.product[0]);
         // console.log()
         setFData({
             img: res.data.product[0].img[0],
             title: res.data.product[0].title,
             id: res.data.product[0].id,
-            discountedPrice: res.data.product[0].price1
+            originalPrice: res.data.product[0].price1,
+            discountedPrice: res.data.product[0].price2
         });
 
         setImgs(res.data.product[0].img);
         setCurrentPhoto(res.data.product[0].img[0])
-        console.log(res.data.product[0]);
+        // console.log(res.data.product[0]);
         const retList = [];
         res.data.product[0].img.map(item => (
             retList.push({
@@ -150,6 +152,7 @@ const Product = (props) => {
                 caption: '...'
             })
         ))
+        setDataLoaded(true);
 
         }).catch(err => console.log(err));
         
@@ -165,7 +168,9 @@ const Product = (props) => {
     }  
       const handleClick = () => {
         setIsItemInCart(true);
-        dispatch(addProduct({product:formatedData, quantity, price: parseFloat(data.price2), id: formatedData.id}));
+        const price = data.price2 == null || undefined ? data.price1 : data.price2
+        console.log(price)
+        dispatch(addProduct({product:formatedData, quantity, price: parseFloat(price), id: formatedData.id}));
       }
 
       const changePhoto = (src) => {
@@ -177,51 +182,52 @@ const Product = (props) => {
     <Container>
         <Navbar/>
         <Announcement/>
-        <Wrapper>
+        {dataLoaded && <Wrapper>
         
-            <ImgContainer>                    
-               <Image src={currentPhoto}/>
-               {imgs.map(src => (<img style={{height:'20%', width:'20%', cursor:'pointer', marginRight:'5px'}} onClick={() => changePhoto(src)}  src={src}></img>))}
-            </ImgContainer>
-            <InfoContainer>
-                <Title>{data.title}</Title>
-                <Desc>{data.desc}</Desc>
-                {data.price2 == null ? 
-                <>
-                <Price>${data.price1}</Price>
-                </>
-                :
-                <>
-                <Price style={{color: 'red', textDecoration: 'line-through', fontSize: '30px'}}>${data.price1}</Price>
-                <br />
-                <Price>${data.price2}</Price>
-                </>
+        <ImgContainer>                    
+           <Image src={currentPhoto}/>
+           {imgs.map(src => (<img style={{height:'20%', width:'20%', cursor:'pointer', marginRight:'5px'}} onClick={() => changePhoto(src)}  src={src}></img>))}
+        </ImgContainer>
+        <InfoContainer>
+            <Title>{data.title}</Title>
+            <Desc>{data.desc}</Desc>
+            {data.price2 == null ? 
+            <>
+            <Price>${data.price1}</Price>
+            </>
+            :
+            <>
+            <Price style={{color: 'red', textDecoration: 'line-through', fontSize: '30px'}}>${data.price1}</Price>
+            <br />
+            <Price>${data.price2}</Price>
+            </>
+            
+            }
+
+            <FilterContainer>
+                <Filter>
+                    <FilterTitle>Size: {data.size}</FilterTitle>
+                    {/* <FilterSize>
+                        
+                        <FilterSizeOption></FilterSizeOption>
+                    </FilterSize> */}
+                </Filter>
+            </FilterContainer>
+
+            <AddContainer>
+                {/* <AmountContainer>
+                    <IoRemoveCircleSharp color='teal'/>
+                    <Amount>1</Amount>
+                    <IoAddCircleSharp color='teal'/>
+                </AmountContainer> */}
+                <Button style={ isItemInCart || isItemAlreadyInCart(itemsInCart, data.id)  ? {pointerEvents:'none', color: 'white', backgroundColor: 'teal'} : {color: 'black'}} 
                 
-                }
+                onClick={() => handleClick()}>{isItemInCart || isItemAlreadyInCart(itemsInCart, data.id)  ? 'ADDED TO CART' : 'ADD TO CART' }</Button>
+            </AddContainer>
+        </InfoContainer>
 
-                <FilterContainer>
-                    <Filter>
-                        <FilterTitle>Size: {data.size}</FilterTitle>
-                        {/* <FilterSize>
-                            
-                            <FilterSizeOption></FilterSizeOption>
-                        </FilterSize> */}
-                    </Filter>
-                </FilterContainer>
-
-                <AddContainer>
-                    {/* <AmountContainer>
-                        <IoRemoveCircleSharp color='teal'/>
-                        <Amount>1</Amount>
-                        <IoAddCircleSharp color='teal'/>
-                    </AmountContainer> */}
-                    <Button style={ isItemInCart || isItemAlreadyInCart(itemsInCart, data.id)  ? {pointerEvents:'none', color: 'white', backgroundColor: 'teal'} : {color: 'black'}} 
-                    
-                    onClick={handleClick}>{isItemInCart || isItemAlreadyInCart(itemsInCart, data.id)  ? 'ADDED TO CART' : 'ADD TO CART' }</Button>
-                </AddContainer>
-            </InfoContainer>
-
-        </Wrapper>
+    </Wrapper>}
+        
         <Newsletter/>
         <Footer/>
       

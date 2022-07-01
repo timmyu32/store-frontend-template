@@ -60,7 +60,7 @@ const CategoryItem = ({item}) => {
         <Image src={item.img}/>
         <Info>
             <Title>{item.title}</Title>
-            <Link to={'/search/Style='+ item.title.toLowerCase()}>
+            <Link to={'/search/style='+ item.title.toLowerCase()}>
                 <Button>SHOP {item.title.toUpperCase()}</Button>
             </Link>
         </Info>

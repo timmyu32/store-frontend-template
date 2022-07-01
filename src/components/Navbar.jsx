@@ -3,7 +3,6 @@ import { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { BiSearchAlt2 } from "react-icons/bi";
 import { FiShoppingCart } from "react-icons/fi";
-import Badge from 'react-bootstrap/Badge';
 import { useDispatch, useSelector } from 'react-redux';
 import { emptyCart } from '../redux/cartRedux';
 import { logout } from '../redux/userRedux';
@@ -11,12 +10,12 @@ import { Link } from "react-router-dom";
 
 
 const Container = styled.div`
-  height: 60px;
+  height: 9vh;
   background-color: black;
   color: white;
   position: fixed;
   z-index: 5;
-  width: 100%;
+  width: 100vw;
 
 `;
 
@@ -88,12 +87,29 @@ const MenuItem = styled.div`
   cursor: pointer;
   margin-left: 25px;
   color: white;
+  position: relative;
   a:link { text-decoration: none; }
   a:visited { text-decoration: none; color: white;}
   a:hover { text-decoration: none; }
   a:active { text-decoration: none; }
   
 `
+
+const Badge = styled.div`
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: bold;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+`;
 
 
 const Navbar = () => {
@@ -139,11 +155,17 @@ const Navbar = () => {
           </Link>
         </Center>
         <Right>
+        {user.currentUser && user.currentUser.user.isAdmin? 
+          <Link to='/admin'>
+            <MenuItem style={{textDecoration: 'underline'}}>ADMIN SITE</MenuItem> 
+          </Link>
+          :
+          <></>
+          }
+
           <Link to='/products'>
             <MenuItem >SEE ALL PRODUCTS</MenuItem>
-          </Link>
-          
-
+          </Link> 
           {user.currentUser && user.currentUser.message == 'user logged in' ? 
           <Link to='/'>
             <MenuItem onClick={handleLogout}>LOGOUT</MenuItem> 
@@ -159,14 +181,11 @@ const Navbar = () => {
           </>
           }
           <Link to='/cart'>
-
-          <MenuItem>
-            <FiShoppingCart /> 
-            <Badge bg="success">{quantity == 0 ? '': quantity}</Badge>
-          </MenuItem> 
-          </Link>
-
-           
+            <MenuItem>
+              <FiShoppingCart /> 
+              {quantity == 0 ? <></>: <Badge>{quantity}</Badge>}
+            </MenuItem> 
+          </Link>           
 
         </Right>
       </Wrapper>
