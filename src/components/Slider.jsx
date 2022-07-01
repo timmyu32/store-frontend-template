@@ -3,7 +3,6 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { ThreeDots,  } from  'react-loader-spinner'
 
 
 const Container = styled.div`
@@ -150,7 +149,7 @@ const Slider = () => {
                         <Button>DETAILS</Button>
                     </Link>
                 </InfoContainer>
-                </> : <ThreeDots color="black" height={80} width={80} />}
+                </> : <></>}
 
                 
             </Slide>

@@ -3,7 +3,6 @@ import axios from "axios";
 import styled from 'styled-components';
 import { popularProducts } from '../data';
 import Product from './Product';
-import { ThreeDots,  } from  'react-loader-spinner'
 
 
 
@@ -41,7 +40,7 @@ const Products = (props) => {
             <Product item={item} key={item.id}/>
         ))
         :
-        <ThreeDots color="black" height={80} width={80} />}
+        <></>}
         
     </Container>
       
