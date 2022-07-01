@@ -31,7 +31,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {mobileView ? <>
         <Routes>
           <Route index element={<Home />} />
           <Route path='/products' exact element={<ProductList />} />
@@ -62,42 +61,6 @@ function App() {
           }
 
         </Routes>
-        </>        
-        : 
-        <>
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path='/products' exact element={<ProductList />} />
-          <Route path='/product/:id' exact element={<Product/>} />
-          <Route path='/cart' exact element={<Cart />} />
-          {user.currentUser && user.currentUser.message == 'user logged in' ?
-          <Route path='/login' exact element={<Home />} />
-          :
-          <Route path='/login' exact element={<SignIn />} />
-          }
-          <Route path='/register' exact element={<Register type={'regular'}/>} />
-          <Route path='/register/admin' exact element={<Register type={'admin'}/>} />
-          <Route path='/search/:term' exact element={<ProductList />} />
-          {user.currentUser && user.currentUser.user.isAdmin?
-          <>
-          <Route path='/admin' exact element={<AdminHome/>} />
-          <Route path='/admin/list/:listType' exact element={<List/>} />
-          <Route path='/admin/redirect/:listType' exact element={<Redirect/>} />
-          <Route path='/admin/new-item' exact element={<NewItem/>} />
-          <Route path='/admin/single-item' exact element={<SingleItem/>} />
-          <Route path='/admin/add-shipping/:orderID' exact element={<ShipItem/>} />
-          <Route path='/admin/order/:orderID' exact element={<OrderDetails/>} />
-          <Route path='/admin/modify/:productID' exact element={<ModifyProduct/>} />
-          
-          </>
-            :
-            <></>
-          }
-
-        </Routes>
-        </>
-        }
-
       </div>
     </Router>
   );
