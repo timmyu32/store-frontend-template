@@ -12,9 +12,7 @@ const Container = styled.div`
     display: flex;
     position: relative;
     overflow: hidden;
-    ${mobile({
-        display: 'none',
-      })} 
+   
 `;
 
 const WIDTH = window.innerWidth
@@ -51,7 +49,7 @@ const Slide = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
-    background-color: #c0c0c0;
+    background-image: linear-gradient(to right, #${props => props.bg1}, #${props => props.bg2});
    
 
 `;
@@ -60,13 +58,15 @@ const ImageContainer = styled.div`
     flex: 1;
     height: 100%;
     
+    
 
 `;
 
 const Image = styled.img`
     height: 95%;
     padding: 5px;
-    border-radius: 5px
+    border-radius: 5px;
+
    
 
 `;
@@ -81,6 +81,7 @@ const InfoContainer = styled.div`
 
 const Title = styled.h1`
     font-size: 70px;
+    color: white;
     ${mobile({
         fontSize: '24px',
       })} 
@@ -90,6 +91,7 @@ const Description = styled.p`
     font-size: 18px;
     font-weight: 500;
     letter-spacing: 3px;
+    color: white;
     ${mobile({
         display: 'none',
       })} 
@@ -135,11 +137,15 @@ const Slider = () => {
         getSliderData();
     }, []);
 
+    const displayWindowSize = () => {
+        setSliderWidth(window.innerWidth)
+    }
+
     const getSliderData = async () => {
         await axios.get(process.env.REACT_APP_API_URL + "/api/slider/3").then(res => {
         setData(res.data.sliderData);
-        console.log(res.data.sliderData)
         setDataFetched(true)
+        window.addEventListener("resize", displayWindowSize);
         
         // console.log(res.data.sliderData);
         }).catch(err => console.log(err));
@@ -152,24 +158,21 @@ const Slider = () => {
   return (
     <Container>
         <Rerousel itemRef={slide1}>
-            {/* <Slide ref={slide1} sliderWidth={sliderWidth} >
-                    {dataFetched ? <>
+            <Slide ref={slide1} sliderWidth={sliderWidth} bg1='0a0a0a'  bg2='0a0a0a'>
                     
-                    <ImageContainer>
-                    </ImageContainer>
-                <InfoContainer id={1}>
-                    <Title>"Check out our New Products"</Title>
+                    
+                <InfoContainer id='1'>
+                    <Title style={{color:'white', fontSize:'90px'}}>Check out our new Products.</Title>
                     <Description></Description>
                     <Link to={"/products/"}>
-                        <Button>DETAILS</Button>
+                        <Button style={{backgroundColor:'white'}}>OUR SELECTIONS</Button>
                     </Link>
                 </InfoContainer>
-                </> : <></>}
 
                 
-            </Slide> */}
+            </Slide>
         {data.map(item => (
-                <Slide ref={slide1} sliderWidth={sliderWidth} bg={item.bg}>
+                <Slide  sliderWidth={sliderWidth} bg1='808080'  bg2='5a5a5a'>
                     {dataFetched ? <>
                     
                     <ImageContainer>
