@@ -16,7 +16,7 @@ import Popup from '../components/Popup';
 
 
 const Container = styled.div`
-
+    width:100%;
 `;
 
 const Wrapper = styled.div`

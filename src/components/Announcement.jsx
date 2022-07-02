@@ -1,3 +1,4 @@
+import { mobile } from '../responsive';
 import styled from 'styled-components';
 
 
@@ -11,6 +12,9 @@ const Container = styled.div`
     font-size: 14px;
     font-weight: 500;
     width: 100%;
+    ${mobile({
+    width: '100%'
+  })} 
 `;
 
 const Announcement = () => {

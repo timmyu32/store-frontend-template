@@ -10,7 +10,7 @@ axios.defaults.xsrfCookieName = "csrftoken";
 
 
 const Container = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -19,8 +19,7 @@ const Container = styled.div`
     rgba(255,255,255,0.9),
     rgba(255,255,255,0.9)
   ),  
-  url('https://media-pictures.depop.com/b0/12546449/1165291087_d003df74d1e34b408a4d7d9e6d95f825/U1.jpg');
-    center;
+ 
   `;
 
 const Wrapper = styled.div`

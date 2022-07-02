@@ -8,7 +8,7 @@ import { mobile } from '../responsive';
 
 const Container = styled.div`
     width: 100%;
-    height: 81vh;
+    height: 500px;
     display: flex;
     position: relative;
     overflow: hidden;
@@ -17,6 +17,8 @@ const Container = styled.div`
         width: '100%'
       })} 
 `;
+
+const WIDTH = window.innerWidth
 
 const Arrow = styled.div`
     width: 50px;
@@ -41,13 +43,13 @@ const Wrapper = styled.div`
     height: 100%;
     display: flex;
     transition: all 1.5s ease;
-    transform: translateX(${props => props.slideIndex * -99}vw);
+    transform: translateX(${props => props.slideIndex * -WIDTH}px);
 `;
  
 
 const Slide = styled.div`
-    width: 99vw;
-    height: 100vh;
+    width: ${WIDTH}px;
+    height: 100%;
     display: flex;
     align-items: center;
     background-color: #c0c0c0;
@@ -65,7 +67,9 @@ const ImageContainer = styled.div`
 `;
 
 const Image = styled.img`
-    height: 80%;
+    height: 95%;
+    padding: 5px;
+    border-radius: 5px
     ${mobile({
         height: '99%',
         width: '200px'
@@ -91,7 +95,7 @@ const Title = styled.h1`
 `;
 const Description = styled.p`
     margin: 30px 0px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
     letter-spacing: 3px;
     ${mobile({

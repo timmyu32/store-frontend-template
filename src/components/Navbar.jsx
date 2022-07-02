@@ -18,7 +18,7 @@ const Container = styled.div`
   width: 100%;
   ${mobile({
     height: '7vh',
-    width: '75%'
+    width: '100%'
   })} 
 }
 
@@ -197,7 +197,7 @@ const Navbar = () => {
           }
 
           <Link to='/products'>
-            <MenuItem >PRODUCTS |</MenuItem>
+            <MenuItem >PRODUCTS</MenuItem>
           </Link> 
           {user.currentUser && user.currentUser.message == 'user logged in' ? 
           <Link to='/'>
@@ -206,7 +206,7 @@ const Navbar = () => {
           :
           <>
           <Link to='/login'>
-            <MenuItem >LOGIN |</MenuItem>  
+            <MenuItem >LOGIN</MenuItem>  
           </Link>
           </>
           }
