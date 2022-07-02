@@ -21,15 +21,17 @@ const Container = styled.div`
 const Wrapper = styled.div`
     padding: 50px;
     display: flex;
+    margin-bottom: 50px;
 `;
 const ImgContainer = styled.div`
     flex: 1;
 `;
 
 const Image = styled.img`
-    width: 90%;
-    height: 90%;
+    width: 75%;
+    height: 75%;
     object-fit: cover;
+    margin-right: 30px;
 `;
 const InfoContainer = styled.div`
     flex: 1;
