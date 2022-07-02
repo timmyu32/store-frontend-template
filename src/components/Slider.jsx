@@ -3,6 +3,7 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { mobile } from '../responsive';
 
 
 const Container = styled.div`
@@ -11,6 +12,10 @@ const Container = styled.div`
     display: flex;
     position: relative;
     overflow: hidden;
+    ${mobile({
+        height: '320px',
+        width: '100%'
+      })} 
 `;
 
 const Arrow = styled.div`
@@ -46,16 +51,25 @@ const Slide = styled.div`
     display: flex;
     align-items: center;
     background-color: #c0c0c0;
+    ${mobile({
+        height: '200px'
+      })} 
+
 `;
 
 const ImageContainer = styled.div`
     flex: 1;
     height: 100%;
+    
 
 `;
 
 const Image = styled.img`
     height: 80%;
+    ${mobile({
+        height: '99%',
+        width: '200px'
+      })} 
 
 `;
 
@@ -63,17 +77,30 @@ const InfoContainer = styled.div`
     flex:1
     padding: 50px;
     margin-left: 20px;
+    ${mobile({
+        flex: 4,
+      })} 
 
 `;
 
 const Title = styled.h1`
     font-size: 70px;
+    ${mobile({
+        fontSize: '24px',
+      })} 
 `;
 const Description = styled.p`
     margin: 30px 0px;
     font-size: 20px;
     font-weight: 500;
     letter-spacing: 3px;
+    ${mobile({
+        margin: '5px 0px',
+        fontSize: '10px',
+        display: 'none',
+      })} 
+    
+    
 `;
 const Button = styled.button`
     padding: 10px;

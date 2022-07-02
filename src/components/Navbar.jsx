@@ -7,8 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { emptyCart } from '../redux/cartRedux';
 import { logout } from '../redux/userRedux';
 import { Link } from "react-router-dom";
-
-
+import { mobile } from '../responsive';
+ 
 const Container = styled.div`
   height: 9vh;
   background-color: black;
@@ -16,6 +16,11 @@ const Container = styled.div`
   position: fixed;
   z-index: 5;
   width: 100%;
+  ${mobile({
+    height: '7vh',
+    width: '75%'
+  })} 
+}
 
 `;
 
@@ -23,17 +28,27 @@ const Wrapper = styled.div`
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
+  ${mobile({
+    padding: '10px 0px'
+  })} 
 `;
 
 const Left = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
+  ${mobile({
+    display: 'none'
+  })} 
 `;
 
 const Language = styled.span`
   font-size: 14px;
   cursor: pointer;
+  ${mobile({
+    display: 'none'
+  })} 
+  
 `
 const SearchContainer = styled.div`
   border: 0.5px solid darkgray;
@@ -41,10 +56,16 @@ const SearchContainer = styled.div`
   align-items: center;
   margin-left: 25px;
   padding: 5px;
+  ${mobile({
+    display: 'none'
+  })} 
 `;
 
 const Input = styled.input`
   border: none;
+  ${mobile({
+    display: 'none'
+  })} 
 `
 
 const Center = styled.div`
@@ -68,6 +89,10 @@ const Logo = styled.h1`
   &:hover{
     cursor: pointer;
   }
+  ${mobile({
+    fontSize: '24px',
+    paddingLeft: '5px'
+  })} 
 `
 
 
@@ -80,6 +105,10 @@ const Right = styled.div`
   a:visited { text-decoration: none; color: white;}
   a:hover { text-decoration: none; }
   a:active { text-decoration: none; }
+  ${mobile({
+    justifyContent: 'center',
+    flex: 5,
+  })} 
 `;
 
 const MenuItem = styled.div`
@@ -92,6 +121,10 @@ const MenuItem = styled.div`
   a:visited { text-decoration: none; color: white;}
   a:hover { text-decoration: none; }
   a:active { text-decoration: none; }
+  ${mobile({
+    fontSize: '16px',
+    marginLeft: '5px'
+  })}
   
 `
 
@@ -140,9 +173,9 @@ const Navbar = () => {
       <Wrapper>
         <Left>
         {user.currentUser && user.currentUser.message == 'user logged in' ?
-        <MenuItem>Welcome {user.currentUser.user.firstname.toUpperCase()}!</MenuItem> 
+        <Language>Welcome {user.currentUser.user.firstname.toUpperCase()}!</Language> 
         :
-        <MenuItem></MenuItem> 
+        <Language></Language> 
         }
           <SearchContainer >
             <Input ref={searchTerm}/>
@@ -151,7 +184,7 @@ const Navbar = () => {
         </Left>
         <Center>
           <Link to='/'>
-            <Logo>wafflesandwatsonandme.</Logo>
+            <Logo>ClothesByDre.</Logo>
           </Link>
         </Center>
         <Right>
@@ -164,7 +197,7 @@ const Navbar = () => {
           }
 
           <Link to='/products'>
-            <MenuItem >SEE ALL PRODUCTS</MenuItem>
+            <MenuItem >PRODUCTS |</MenuItem>
           </Link> 
           {user.currentUser && user.currentUser.message == 'user logged in' ? 
           <Link to='/'>
@@ -172,11 +205,8 @@ const Navbar = () => {
           </Link>
           :
           <>
-          <Link to='/register'>
-            <MenuItem>SIGN UP FOR FREE</MenuItem>
-          </Link>
           <Link to='/login'>
-            <MenuItem >LOGIN</MenuItem>  
+            <MenuItem >LOGIN |</MenuItem>  
           </Link>
           </>
           }

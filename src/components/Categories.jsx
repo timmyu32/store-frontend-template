@@ -1,8 +1,8 @@
 import React, { useState, setState, useEffect } from 'react';
 import styled from 'styled-components';
-import {categories} from "../data"
 import CategoryItem from './CategoryItem';
 import axios from "axios";
+import { mobile } from '../responsive';
 
 import { ThreeDots,  } from  'react-loader-spinner'
 
@@ -12,6 +12,10 @@ const Container = styled.div`
     display: flex;
     padding: 20px;
     justify-content: space-between;
+    width: 100%;
+    ${mobile({
+      flexDirection: 'column',
+    })} 
 `;
 
 const Categories = () => {

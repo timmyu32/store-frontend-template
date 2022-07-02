@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { RiSendPlaneFill } from "react-icons/ri";
 import { useRef, useState } from 'react';
 import axios from 'axios';
+import { mobile } from '../responsive';
+
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
 
@@ -13,6 +15,7 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;   
     flex-direction: column; 
+    width: 100%;
 `;
 
 const Title = styled.h1`
@@ -25,7 +28,10 @@ const Desc = styled.div`
     font-size: 24px;
     font-weight: 300;
     margin-bottom: 20px;   
-    color: white;  
+    color: white; 
+    ${mobile({
+      marginLeft: '20px'
+    })} 
 
 `;
 
