@@ -9,6 +9,7 @@ import DetailedProducts from '../components/DetailedProducts';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
+import { mobile } from '../responsive';
 
 
 
@@ -23,6 +24,9 @@ const Container2 = styled.div`
 const FilterContainer = styled.div`
     display: flex;
     justify-content: space-between;
+    ${mobile({
+        display: 'none',
+      })} 
 `;
 
 const Title = styled.h1`

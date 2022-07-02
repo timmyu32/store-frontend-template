@@ -6,6 +6,7 @@ import { BsTwitter } from "react-icons/bs";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { Link } from 'react-router-dom';
+import { mobile } from '../responsive';
 
 
 const Container = styled.div`
@@ -17,6 +18,9 @@ const Container = styled.div`
     a:hover { text-decoration: none; color: white;}
     a:active { text-decoration: none; color: white;}
     width: 100%;
+    ${mobile({
+        display: 'none',
+      })} 
 
 `;
 
