@@ -143,8 +143,10 @@ const ProductList = (props) => {
                     <Option>Price (decc)</Option>
                 </Select>
             </Container2>
-        </FilterContainer>  
-        <DetailedProducts limit={0}/>
+        </FilterContainer>
+        <div className="dpc" style={{padding:'20px'}}>
+            <DetailedProducts limit={0}/>
+        </div>  
         <Newsletter/>
         <Footer/>
 

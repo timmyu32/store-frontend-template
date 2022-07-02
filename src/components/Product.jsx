@@ -34,7 +34,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #eae8e8;
+    background-color: #ededed;
     position: relative;
     a:link { text-decoration: none; color: black; }
     a:visited { text-decoration: none; color: black;}

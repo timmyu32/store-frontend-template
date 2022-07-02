@@ -8,7 +8,6 @@ import { useDispatch } from 'react-redux';
 
 
 const Container = styled.div`
-    padding: 50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

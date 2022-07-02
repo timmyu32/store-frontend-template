@@ -167,7 +167,7 @@ const MobileProduct = (props) => {
         {dataLoaded &&
         <>
         <Wrapper>
-        <Title style={{paddingTop: '50px', textDecoration:'underline', textAlign:'center'}}>{data.title}</Title> 
+        <Title style={{paddingTop: '50px', textAlign:'center'}}>{data.title}</Title> 
         <ImgContainer>                    
            <Image src={currentPhoto}/>
            <div className="thumbnails" style={{alignItems:'center', justifyContent:'center',  textAlign:'center'}}>
@@ -175,12 +175,31 @@ const MobileProduct = (props) => {
            </div>
         </ImgContainer>
         <SubTitle>{data.title}</SubTitle> 
+        {data.price2 == null ? 
+            <>
+            <Price>${data.price1}</Price>
+            </>
+            :
+            <>
+            <Price style={{color: 'red', textDecoration: 'line-through', fontSize: '30px'}}>${data.price1}</Price>
+            <br />
+            <Price>${data.price2}</Price>
+            </>
+            
+            }
         <Desc>{data.desc}</Desc>
-        <AddContainer>
-                <Button style={ isItemInCart || isItemAlreadyInCart(itemsInCart, data.id)  ? {pointerEvents:'none', color: 'white', backgroundColor: 'black'} : {color: 'black'}} 
-                
-                onClick={() => handleClick()}>{isItemInCart || isItemAlreadyInCart(itemsInCart, data.id)  ? 'ADDED TO CART' : 'ADD TO CART' }</Button>
+        <div className="SizeAndCart" style={{display:'flex'}}>
+            <FilterContainer>
+                    <Filter>
+                        <FilterTitle>Size: {data.size}</FilterTitle>
+                    </Filter>
+                </FilterContainer>
+            <AddContainer>
+                    <Button style={ isItemInCart || isItemAlreadyInCart(itemsInCart, data.id)  ? {pointerEvents:'none', color: 'white', backgroundColor: 'black'} : {color: 'black'}} 
+                    
+                    onClick={() => handleClick()}>{isItemInCart || isItemAlreadyInCart(itemsInCart, data.id)  ? 'ADDED TO CART' : 'ADD TO CART' }</Button>
             </AddContainer>
+        </div>
             </Wrapper>
             </>
             

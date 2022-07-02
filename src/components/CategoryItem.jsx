@@ -43,6 +43,7 @@ const Button = styled.button`
     background-color: white;
     font-color: gray;
     cursor: pointer;
+    color: black;
     font-weight: 600;
     border: solid 2px black;
     transition: all 0.6s ease;

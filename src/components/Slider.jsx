@@ -105,6 +105,7 @@ const Button = styled.button`
     padding: 10px;
     font-size: 20px;
     background-color: transparent;
+    color: black;
     cursor: pointer;
     transition: all 0.7s ease;
 

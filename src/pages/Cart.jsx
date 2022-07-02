@@ -137,6 +137,7 @@ const Button = styled.button`
     padding: 10px;
     background-color: white;
     transition: all 0.5s ease;
+    color: black;
     cursor: pointer;
     font-weight: 600;
 
