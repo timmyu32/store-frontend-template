@@ -57,6 +57,9 @@ const Slide = styled.div`
 const ImageContainer = styled.div`
     flex: 1;
     height: 100%;
+    ${mobile({
+        display:'none'
+    })}
     
     
 
@@ -147,7 +150,7 @@ const Slider = () => {
         setDataFetched(true)
         window.addEventListener("resize", displayWindowSize);
         
-        // console.log(res.data.sliderData);
+        console.log(res.data.sliderData);
         }).catch(err => console.log(err));
         
     }
@@ -162,10 +165,10 @@ const Slider = () => {
                     
                     
                 <InfoContainer id='1'>
-                    <Title style={{color:'white', fontSize:'90px'}}>Check out our new Products.</Title>
+                    <Title style={{color:'white', fontSize:'90px'}}>New Products.</Title>
                     <Description></Description>
                     <Link to={"/products/"}>
-                        <Button style={{backgroundColor:'white'}}>OUR SELECTIONS</Button>
+                        <Button style={{backgroundColor:'white'}}>OUR SELECTION</Button>
                     </Link>
                 </InfoContainer>
 

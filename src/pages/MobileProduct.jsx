@@ -15,12 +15,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 const Container = styled.div`
-
 `;
 
 const Wrapper = styled.div`
-    padding: 50px;
-    display: flex;
+    padding: 15px;
 `;
 const ImgContainer = styled.div`
     flex: 1;
@@ -37,6 +35,10 @@ const InfoContainer = styled.div`
 
 `;
 const Title = styled.h1`
+    font-weight: 200;
+`;
+
+const SubTitle = styled.h3`
     font-weight: 200;
 `;
 const Desc = styled.p`
@@ -82,7 +84,7 @@ const Button = styled.button`
     font-weight: 600;
     
     &:hover{
-        background-color: teal;
+        background-color: black;
         color: white;
     }
 
@@ -90,7 +92,7 @@ const Button = styled.button`
 
 
 
-const Product = (props) => {
+const MobileProduct = (props) => {
     const [data, setData] = useState({});
     const [formatedData, setFData] = useState({});
     const [imgs, setImgs] = useState([]);
@@ -162,8 +164,31 @@ const Product = (props) => {
   return (
     <Container>
         <Navbar/>
-        <Announcement/>
-        {dataLoaded && <Wrapper>
+        {dataLoaded &&
+        <>
+        <Wrapper>
+        <Title style={{paddingTop: '50px', textDecoration:'underline', textAlign:'center'}}>{data.title}</Title> 
+        <ImgContainer>                    
+           <Image src={currentPhoto}/>
+           <div className="thumbnails" style={{alignItems:'center', justifyContent:'center',  textAlign:'center'}}>
+                {imgs.map(src => (<img style={{height:'20%', width:'20%', cursor:'pointer', marginRight:'5px'}} onClick={() => changePhoto(src)}  src={src}></img>))}
+           </div>
+        </ImgContainer>
+        <SubTitle>{data.title}</SubTitle> 
+        <Desc>{data.desc}</Desc>
+        <AddContainer>
+                <Button style={ isItemInCart || isItemAlreadyInCart(itemsInCart, data.id)  ? {pointerEvents:'none', color: 'white', backgroundColor: 'black'} : {color: 'black'}} 
+                
+                onClick={() => handleClick()}>{isItemInCart || isItemAlreadyInCart(itemsInCart, data.id)  ? 'ADDED TO CART' : 'ADD TO CART' }</Button>
+            </AddContainer>
+            </Wrapper>
+            </>
+            
+        }
+
+
+
+        {/* {dataLoaded && <Wrapper>
         
         <ImgContainer>                    
            <Image src={currentPhoto}/>
@@ -199,7 +224,7 @@ const Product = (props) => {
         </InfoContainer>
 
     </Wrapper>}
-        
+         */}
         <Newsletter/>
         <Footer/>
       
@@ -207,4 +232,4 @@ const Product = (props) => {
   )
 }
 
-export default Product
+export default MobileProduct

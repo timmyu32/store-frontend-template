@@ -19,11 +19,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import MobileProduct from './pages/MobileProduct';
 
 
 function App() {
   const user = useSelector(state => state.user);
-  const mql = window.matchMedia('(max-width: 600px)');
+  const mql = window.matchMedia('(max-width: 480px)');
 
   let mobileView = mql.matches;
 
@@ -34,7 +35,11 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path='/products' exact element={<ProductList />} />
-          <Route path='/product/:id' exact element={<Product/>} />
+          {mobileView ?
+          <Route path='/product/:id' exact element={<MobileProduct/>} /> :
+          <Route path='/product/:id' exact element={<Product/>} /> 
+          }
+          
           <Route path='/cart' exact element={<Cart />} />
           {user.currentUser && user.currentUser.message == 'user logged in' ?
           <Route path='/login' exact element={<Home />} />

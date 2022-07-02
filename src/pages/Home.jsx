@@ -19,14 +19,15 @@ const Button = styled.button`
     margin-bottom: 10px;
     padding: 10px;
     font-size: 20px;
-    background-color: white;
+    background-color: black;
+    color: white;
     transition: all 0.5s ease;
     cursor: pointer;
     font-weight: 600;
 
     &:hover{
-        background-color: black;
-        color: white;
+        background-color: white;
+        color: black;
     }
 `;
 

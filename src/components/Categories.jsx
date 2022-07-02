@@ -30,7 +30,7 @@ const Categories = () => {
     await axios.get(process.env.REACT_APP_API_URL + "/api/categories/3").then(res => {
         setDataFetched(true);
         setData(res.data.categories);
-    // console.log(res.data.categories);
+    console.log(res.data.categories);
     }).catch(err => console.log(err));
     
 }
