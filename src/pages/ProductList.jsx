@@ -10,7 +10,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import { mobile } from '../responsive';
-
+import { Link } from 'react-router-dom';
+import { HiMenu } from "react-icons/hi";
 
 
 const Container = styled.div`
@@ -24,6 +25,7 @@ const Container2 = styled.div`
 const FilterContainer = styled.div`
     display: flex;
     justify-content: space-between;
+    padding: 20px;
     ${mobile({
         display: 'none',
       })} 
@@ -31,6 +33,7 @@ const FilterContainer = styled.div`
 
 const Title = styled.h1`
     margin: 20px;
+    text-align: center;
 `;
 
 const Filter = styled.div`
@@ -45,6 +48,16 @@ const FilterText = styled.span`
 const Select = styled.select`
     padding: 10px;
     margin-right: 10px;
+`;
+
+const Icon = styled.div`
+    a:link { text-decoration: none; color: black; }
+    a:visited { text-decoration: none; color: black;}
+    a:hover { text-decoration: none;  color: black;}
+    a:active { text-decoration: none; color: black;}
+    color: black;
+    margin-right: 30px;
+
 `;
 
 const Option = styled.option`
@@ -97,9 +110,13 @@ const ProductList = (props) => {
         console.log("/search/" + e.target.name +'=' + e.target.value);
         history("/search/" + e.target.name +'=' + e.target.value.toLowerCase());
         window.location.reload(false);
-
-
     };
+
+
+    const mql = window.matchMedia('(max-width: 480px)');
+  
+    let mobileView = mql.matches;
+  
     
     // console.log(filters);
 
@@ -110,7 +127,25 @@ const ProductList = (props) => {
         <br />
         <br />
         <Announcement/>
-        <Title>Dress Shirts</Title>
+        {mobileView ? 
+        <div className="title-menu" 
+        style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            width: '100%',
+
+        }}>
+            <Title>Products.</Title>
+            <Link to='/mobile-menu'>
+                <Icon>
+                    <HiMenu size={'40'}/>
+                </Icon>
+            </Link>
+        </div>
+        :
+        <Title>Products.</Title>
+        }
         <FilterContainer>
             <Container2>
             <Filter><FilterText>Filter Products</FilterText></Filter>

@@ -4,6 +4,7 @@ import Product from './pages/Product';
 import Cart from './pages/Cart';
 import MobileCart from'./pages/MobileCart';
 import MobileProduct from './pages/MobileProduct';
+import MobileFilterMenu from './pages/MobileFilterMenu';
 import Register from './pages/Register';
 import SignIn from './pages/LogIn';
 //Admin Pages
@@ -49,6 +50,8 @@ function App() {
           <Route path='/register' exact element={<Register type={'regular'}/>} />
           <Route path='/register/admin' exact element={<Register type={'admin'}/>} />
           <Route path='/search/:term' exact element={<ProductList />} />
+          <Route path='/mobile-menu' exact element={<MobileFilterMenu />} />
+
           {user.currentUser && user.currentUser.user.isAdmin?
           <>
           <Route path='/admin' exact element={<AdminHome/>} />
