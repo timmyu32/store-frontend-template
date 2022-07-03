@@ -41,6 +41,9 @@ const InputContainer = styled.div`
     display: flex;
     justify-content: space-between;
     border: 1px solid lightgray;
+    ${mobile({
+      marginRight: '10px'
+    })} 
 
 `;
 
@@ -68,6 +71,8 @@ const Button = styled.button`
 const Newsletter = () => {
   const emailRef = useRef(null);
   const [emailsuccess, setEmailSuccess] = useState(false)
+  const [emailFailure, setEmailFailure] = useState(false)
+
 
   const handleClick = async () => {
 
@@ -78,9 +83,12 @@ const Newsletter = () => {
           email: emailRef.current.value,
         });
         setEmailSuccess(true);
+        setEmailFailure(false)   ;  
+        emailRef.current.value = '';
+
         // console.log(res.data)
       } catch (error) {
-        // console.log(error)     
+        setEmailFailure(true)   ;  
       }
 
   }
@@ -97,6 +105,8 @@ const Newsletter = () => {
             </Button>
         </InputContainer>
         {emailsuccess? <span style={{color:'lightgray'}}>Thank you for subscribing!</span>: <></>}
+        {emailFailure? <span style={{color:'red'}}>Something went wrong...try again.</span>: <></>}
+
     </Container>
   )
 }

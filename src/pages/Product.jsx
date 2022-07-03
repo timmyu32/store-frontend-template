@@ -152,7 +152,7 @@ const Product = (props) => {
       const handleClick = () => {
         setIsItemInCart(true);
         const price = data.price2 == null || undefined ? data.price1 : data.price2
-        console.log(price)
+        // console.log(price)
         dispatch(addProduct({product:formatedData, quantity, price: parseFloat(price), id: formatedData.id}));
       }
 

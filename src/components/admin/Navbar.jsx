@@ -37,8 +37,8 @@ const Navbar = () => {
             <div className="items">
                 <Link to='/admin/list/orders'>
                     <div className="item">
-                        <FaClipboardList className="icon"/>
-                        {numOrders && <div className="counter">{numOrders}</div>}
+                        <FaClipboardList color='#7451f8' className="icon"/>
+                        {numOrders != 0  && <div className="counter">{numOrders}</div>}
                     </div>
                 </Link>
                 {/* <div className="item">

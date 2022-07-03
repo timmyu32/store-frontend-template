@@ -51,7 +51,7 @@ const ModifyProduct = () => {
             data: {
                 title: titleRef.current.value,
                 price1: price1Ref.current.value.split('$')[1],
-                price2: price1Ref.current.value.split('$')[1],
+                price2: price2Ref.current.value.split('$')[1],
                 desc: descriptionRef.current.value,
             }
         })

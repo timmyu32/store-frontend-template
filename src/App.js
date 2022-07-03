@@ -2,6 +2,8 @@ import Home from './pages/Home';
 import ProductList from './pages/ProductList';
 import Product from './pages/Product';
 import Cart from './pages/Cart';
+import MobileCart from'./pages/MobileCart';
+import MobileProduct from './pages/MobileProduct';
 import Register from './pages/Register';
 import SignIn from './pages/LogIn';
 //Admin Pages
@@ -15,11 +17,7 @@ import Redirect from './pages/admin/Redirect'
 import ModifyProduct from './pages/admin/ModifyProduct'
 import { useDispatch, useSelector } from 'react-redux';
 
-
-
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MobileProduct from './pages/MobileProduct';
 
 
 function App() {
@@ -40,7 +38,9 @@ function App() {
           <Route path='/product/:id' exact element={<Product/>} /> 
           }
           
-          <Route path='/cart' exact element={<Cart />} />
+          {mobileView ?
+          <Route path='/cart' exact element={<MobileCart />} /> :
+          <Route path='/cart' exact element={<Cart />} /> }
           {user.currentUser && user.currentUser.message == 'user logged in' ?
           <Route path='/login' exact element={<Home />} />
           :
