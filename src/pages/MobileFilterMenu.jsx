@@ -42,6 +42,13 @@ font-weight: 600;
 const Select = styled.select`
 padding: 10px;
 margin-bottom: 10px;
+color: black;
+font-size: 30px;
+font-weight: bold;
+background-color: #eaeaea;
+text-align: center;
+padding-top: 20px;
+padding-bottom: 20px;
 `;
 
 const Option = styled.option`
