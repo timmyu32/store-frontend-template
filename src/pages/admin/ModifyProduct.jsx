@@ -4,10 +4,8 @@ import Sidebar from '../../components/admin/Sidebar';
 import { useRef, useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
 import CurrencyInput from 'react-currency-input-field';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import { ThreeDots } from  'react-loader-spinner'
 
 
 const ModifyProduct = () => {
@@ -133,13 +131,7 @@ const ModifyProduct = () => {
                             </div>
                             
                             {!modified ? 
-                            <button>{loading ? <ThreeDots
-                                        height="25"
-                                        width="25"
-                                        color='#7451f8'
-                                        ariaLabel='loading'
-                                    />
-                                :
+                            <button>{loading ? 'LOADING...'                                :
                                 'UPDATE LISTING'}</button>
                             :
                             <button disabled>LISTING UPDATED</button>

@@ -52,6 +52,8 @@ padding-bottom: 20px;
 `;
 
 const Option = styled.option`
+    color: black;
+    background-color: white;
 
 `;
 

@@ -16,6 +16,7 @@ import ShipItem from './pages/admin/ShipItem';
 import OrderDetails from './pages/admin/OrderDetails'
 import Redirect from './pages/admin/Redirect'
 import ModifyProduct from './pages/admin/ModifyProduct'
+import NewDiscount from './pages/admin/NewDiscount'
 import { useDispatch, useSelector } from 'react-redux';
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -62,6 +63,7 @@ function App() {
           <Route path='/admin/add-shipping/:orderID' exact element={<ShipItem/>} />
           <Route path='/admin/order/:orderID' exact element={<OrderDetails/>} />
           <Route path='/admin/modify/:productID' exact element={<ModifyProduct/>} />
+          <Route path='/admin/discounts' exact element={<NewDiscount/>} />
           
           </>
             :

@@ -12,6 +12,7 @@ import {useNavigate} from 'react-router-dom';
 import { mobile } from '../responsive';
 import { Link } from 'react-router-dom';
 import { HiMenu } from "react-icons/hi";
+import MobileFooter from '../components/MobileFooter'
 
 
 const Container = styled.div`
@@ -183,7 +184,8 @@ const ProductList = (props) => {
             <DetailedProducts limit={0}/>
         </div>  
         <Newsletter/>
-        <Footer/>
+        {mobileView ?  <MobileFooter/> : <Footer/>}
+
 
       
     </Container>

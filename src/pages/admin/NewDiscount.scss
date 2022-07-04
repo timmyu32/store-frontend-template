@@ -1,0 +1,115 @@
+.newDiscount{
+
+    display: flex;
+    width: 100%;
+
+    .container{
+        flex: 6;
+
+        .top{
+            -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.43); 
+            box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.43);
+            padding: 10px;
+            margin: 20px;
+            height: 250px;
+            border-radius: 10px;
+            display: flex;
+
+            .topLeft{
+                flex: 3;
+                border-right: 2px solid rgb(146, 146, 146);
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+
+                .title{
+                    h2{
+                        font-size: 30px;
+                        font-weight: bold;
+                    }
+                    h4{
+                        color: gray;
+                    }
+                    
+                    .icon{
+                        color: #7451f8;
+                    }
+
+                }
+            }
+
+            
+            .topRight{
+                flex: 7;
+                
+                .formContainer{
+                    text-align: center;
+                    margin-left: 25%;
+                    margin-top: 8%;
+
+                    .inputs{
+                        text-align: start;
+                        .formInput{
+                            padding-bottom: 5px;
+                            
+                            label{
+                                font-weight: 600;
+                                font-size: 25px;
+                            }
+    
+                            input{
+                                border-top: none;
+                                border-left: none;
+                                border-right: none;
+                                border-bottom: 1px solid black;
+                                outline: none;
+                                padding: 5px;
+                                font-size: 25px;
+    
+                                
+                            }
+                            
+                        }
+                    }
+                    
+                    button{
+                        background-color: #7451f8;
+                        color: white;
+                        font-size: 14px;
+                        font-weight: bold;
+                        margin-left: 20%;
+                        padding: 4px;
+                        margin-top: 5px;
+                        border: 2px solid rgb(37, 36, 36);
+                        cursor: pointer;
+                        transition: 0.25s all ease;
+    
+                        &:hover{
+                            color: #7451f8;
+                            background-color: gray;
+                        }
+                    }
+                    span{
+                        font-size: 16px;
+                        font-weight: bold;
+                        margin-left: 20%;
+                        background-color: rgb(228, 228, 228);
+                        border-radius: 5px;
+                        padding: 4px;
+                        color: rgb(41, 160, 41)
+                    }
+                }
+            }
+        }
+
+        .bottom{
+            -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.43); 
+            box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.43);
+            padding: 10px;
+            margin: 20px;
+            border-radius: 10px;
+        }
+
+
+    }
+}

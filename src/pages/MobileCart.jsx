@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Navbar from '../components/Navbar';
 import Announcement from '../components/Announcement';
-import Footer from '../components/Footer';
+import MobileFooter from '../components/MobileFooter'
 import Newsletter from '../components/Newsletter';
 import { Link } from "react-router-dom";
 import { useEffect, useState, useRef } from 'react';
@@ -501,7 +501,8 @@ const MobileCart = () => {
         </Wrapper> */}
 
         <Newsletter/>
-        <Footer/>
+        <MobileFooter/> 
+
     </Container>
   )
 }

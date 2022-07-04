@@ -11,6 +11,7 @@ import { GiNotebook } from "react-icons/gi";
 
 import { CgProfile } from "react-icons/cg";
 
+import { ImBarcode } from "react-icons/im";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 
 import { Link } from "react-router-dom";
@@ -81,6 +82,12 @@ const Sidebar = () => {
                     <li>
                         <MdOutlineAddCircle className="icon"/>
                         <span>New Listing</span>
+                    </li>
+                </Link>
+                <Link to='/admin/discounts'>
+                    <li>
+                        <ImBarcode className="icon"/>
+                        <span>Discount Codes</span>
                     </li>
                 </Link>
                 <li>

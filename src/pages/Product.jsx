@@ -9,6 +9,7 @@ import axios from "axios";
 import { useParams } from 'react-router-dom'
 import { addProduct } from '../redux/cartRedux';
 import { useDispatch, useSelector } from 'react-redux';
+import MobileFooter from '../components/MobileFooter'
 
 // import {Carousel}  from 'react-responsive-carousel';
 
@@ -112,7 +113,9 @@ const Product = (props) => {
         window.scrollTo(0, 0);
 
     }, []);
+    const mql = window.matchMedia('(max-width: 480px)');
 
+    let mobileView = mql.matches;
     const getItems = async () => {
         await axios.get(process.env.REACT_APP_API_URL + "/api/product/"+ id).then(res => {
         setData(res.data.product[0]);
@@ -122,7 +125,8 @@ const Product = (props) => {
             title: res.data.product[0].title,
             id: res.data.product[0].id,
             originalPrice: res.data.product[0].price1,
-            discountedPrice: res.data.product[0].price2
+            discountedPrice: res.data.product[0].price2,
+            condition: res.data.product[0].condition,
         });
 
         setImgs(res.data.product[0].img);
@@ -191,6 +195,9 @@ const Product = (props) => {
                 <Filter>
                     <FilterTitle>Size: {data.size}</FilterTitle>
                 </Filter>
+                <Filter>
+                    <FilterTitle>Condition: {data.condition}</FilterTitle>
+                </Filter>
             </FilterContainer>
 
             <AddContainer>
@@ -203,7 +210,7 @@ const Product = (props) => {
     </Wrapper>}
         
         <Newsletter/>
-        <Footer/>
+        {mobileView ?  <MobileFooter/> : <Footer/>}
       
     </Container>
   )

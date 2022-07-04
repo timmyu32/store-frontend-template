@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { showPopUp } from '../redux/userRedux'
 import Popup from '../components/Popup'
 import styled from 'styled-components'
+import MobileFooter from '../components/MobileFooter'
 
 
 const Button = styled.button`
@@ -46,6 +47,9 @@ const Home = () => {
     dispatch(showPopUp());
 
   }
+  const mql = window.matchMedia('(max-width: 480px)');
+
+  let mobileView = mql.matches;
 
   // console.log(isOpen)
   // console.log(user)
@@ -71,7 +75,8 @@ const Home = () => {
         <Link to={'/products'}>
         <Button>Continue</Button>
         </Link>
-        <Footer/>
+        {mobileView ?  <MobileFooter/> : <Footer/>}
+        
     </div>
   )
 }

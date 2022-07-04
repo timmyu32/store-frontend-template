@@ -4,15 +4,18 @@ import { useRef, useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
+import Popup from '../Popup';
 
 const DataTable = (props) => {
   const [columnDefs, setColumnDefs] = useState([])
   const [rowData, setrowData] = useState([])
+  const [modifyCode, setModifyCode] = useState(false)
+  const [discountCode, setCode] = useState(null)
 
-  const [allUsers, setallUsers] = useState([])
-  const [allProducts, setallProducts] = useState([])
+  const [isOpen, setIsOpen] = useState(true)
+
+
   const [dataFetched, setDataFetched] = useState(false)
-  const didMountRef = useRef(false)
   const [listType, setListType] = useState(null)
   const history = useNavigate()
   
@@ -32,7 +35,10 @@ const DataTable = (props) => {
     history('/admin/add-shipping/'+id);
   }
 
-  
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+
+  }
 
   const populateDT =  () => {
     const path = window.location.pathname;
@@ -287,6 +293,70 @@ const DataTable = (props) => {
       getShipping();
       break;
       
+      case '/admin/discounts':
+        setListType('CURRENT ACTIVE CODES')
+
+        const clickDeleteCode = async (code) => {
+          const result = await window.confirm("Are you sure you want to delete this discount code?");
+          if(result){
+            const res = await axios.post(process.env.REACT_APP_API_URL + '/api/code/delete/'+code);
+            window.location.reload()
+          return;
+        }
+        };
+        
+
+
+
+        const columns5 = [
+            { field: 'id', headerName: 'ID', width: '100' },
+            { field: 'code', headerName: 'Code', width: '250' },
+            { field: 'discount', headerName: 'Discount', width: '250',
+              renderCell: (params) =>
+              <p>{params.value}%</p>
+
+            },
+            { field:'code2', headerName: "Action", width: '250',
+                renderCell: (params)=>{
+                    return (
+                        <div className="cellAction">
+                            {/* NOTE CREATE VIEW!!!! */}
+                            <div className="viewButton" onClick={() => {
+                              setModifyCode(true);
+                              setCode(params.value);                              
+                              }}>Modify</div>
+                            <div className="deleteButton" onClick={() => clickDeleteCode(params.value)}>Delete</div>
+  
+                        </div>
+                    )
+                }
+            }
+          ];
+        setColumnDefs(columns5);
+        const getCodes =  () => {
+          var codes = []
+          const res4 =  axios.get(process.env.REACT_APP_API_URL + '/api/codes/all')
+          .then(response => 
+          {
+            codes = response.data.codes;
+            const rows5 =[]
+            codes.map(code =>{
+              rows5.push(
+                {
+                  code: code['code'],
+                  code2: code['code'],
+                  discount: code['discount'],
+                  id: code['id'],
+                }
+              )
+            });
+            setrowData(rows5);
+            setDataFetched(true);
+          })
+        }
+        getCodes();
+        break;
+     
       default:
         break;
     }
@@ -299,6 +369,11 @@ const DataTable = (props) => {
 
   return (
     <div className="datatable">
+      {modifyCode && isOpen &&
+      <Popup isModifyCodeForm={true} code={discountCode} handleClose={() => togglePopup()} content={<>
+        <h1>Modify Your Discount Code.</h1>
+      </>}/>
+      }
       {dataFetched &&
       <>
         <h1>{listType}</h1>

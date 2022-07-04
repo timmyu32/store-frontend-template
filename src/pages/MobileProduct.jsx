@@ -122,7 +122,8 @@ const MobileProduct = (props) => {
             title: res.data.product[0].title,
             id: res.data.product[0].id,
             originalPrice: res.data.product[0].price1,
-            discountedPrice: res.data.product[0].price2
+            discountedPrice: res.data.product[0].price2,
+            condition: res.data.product[0].condition,
         });
 
         setImgs(res.data.product[0].img);
@@ -188,12 +189,19 @@ const MobileProduct = (props) => {
             
             }
         <Desc>{data.desc}</Desc>
-        <div className="SizeAndCart" style={{display:'flex'}}>
+        <div className="SizeAndCart" style={{display:'flex', flexDirection:'column'}}>
             <FilterContainer>
                     <Filter>
                         <FilterTitle>Size: {data.size}</FilterTitle>
                     </Filter>
-                </FilterContainer>
+                
+            </FilterContainer>
+            <FilterContainer>
+                <Filter>
+                    <FilterTitle>Condition: {data.condition}</FilterTitle>
+                </Filter>
+            </FilterContainer>
+
             <AddContainer>
                     <Button style={ isItemInCart || isItemAlreadyInCart(itemsInCart, data.id)  ? {pointerEvents:'none', color: 'white', backgroundColor: 'black'} : {color: 'black'}} 
                     

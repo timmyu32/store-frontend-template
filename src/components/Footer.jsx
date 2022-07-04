@@ -18,10 +18,8 @@ const Container = styled.div`
     a:hover { text-decoration: none; color: white;}
     a:active { text-decoration: none; color: white;}
     width: 100%;
-    ${mobile({
-        display: 'none',
-      })} 
-
+    padding-bottom: 100px;
+    
 `;
 
 const Logo = styled.h1``;
