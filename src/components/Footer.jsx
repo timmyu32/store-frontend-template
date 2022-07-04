@@ -17,9 +17,7 @@ const Container = styled.div`
     a:link { text-decoration: none; }color: white;
     a:hover { text-decoration: none; color: white;}
     a:active { text-decoration: none; color: white;}
-    width: 100%;
-    padding-bottom: 100px;
-    
+    width: 100%;    
 `;
 
 const Logo = styled.h1``;
