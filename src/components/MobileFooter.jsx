@@ -120,11 +120,11 @@ const MobileFilterMenu = () => {
             <List>
                 <ListItem>
                 <IoLocationSharp style={{marginRight:"10px"}}/>
-                300 Babcock Street, Boston MA, 02215
+                123 Address Street, City NY, 01234
             </ListItem>
             <ListItem>
                 <MdEmail style={{marginRight:"10px"}}/>
-                contact@gemlogz..com
+                contact@email.com
             </ListItem>
             </List>
             

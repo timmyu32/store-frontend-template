@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import { showPopUp } from '../redux/userRedux'
 import Popup from '../components/Popup'
 import styled from 'styled-components'
+import PopupNewsletter from '../components/PopupNewsletter'
 {}
 
 
@@ -65,7 +66,7 @@ const Home = () => {
         <Announcement/>
         {isOpen  && (user.initialPopUpShown == 0) && <Popup
         content={<>
-          <Newsletter/>
+          <PopupNewsletter/>
         </>}
         handleClose={() => togglePopup()}
       />}
