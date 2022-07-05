@@ -7,6 +7,29 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
+const rows = [
+  {
+    id:1,
+    product: 'T Shirt',
+    img: 'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/divhtybtltxjtyhhq2i5/sportswear-club-mens-t-shirt-ShrJfX.png',
+    customer: 'Mike Doe',
+    date: '1 March',
+    amount: 900,
+    method: "Online Payment",
+    status: "Shipped"
+  },
+  {
+    id:2,
+    product: 'T Shirt Alternate',
+    img: 'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/divhtybtltxjtyhhq2i5/sportswear-club-mens-t-shirt-ShrJfX.png',
+    customer: 'Joe Schmoe',
+    date: '3 March',
+    amount: 70,
+    method: "Online Payment",
+    status: "Not Shipped"
+  },
+]
+
 
 const TableComponent = () => {
   return (
