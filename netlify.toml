@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/:path"
+  to = "/path"
+  status = 200
