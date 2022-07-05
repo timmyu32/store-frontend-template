@@ -4,12 +4,10 @@ import Navbar from '../components/Navbar';
 import Announcement from '../components/Announcement';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
-import { IoAddCircleSharp, IoRemoveCircleSharp } from 'react-icons/io5';
 import axios from "axios";
 import { useParams } from 'react-router-dom'
 import { addProduct } from '../redux/cartRedux';
 import { useDispatch, useSelector } from 'react-redux';
-import MobileFooter from '../components/MobileFooter'
 
 // import {Carousel}  from 'react-responsive-carousel';
 
@@ -210,7 +208,7 @@ const Product = (props) => {
     </Wrapper>}
         
         <Newsletter/>
-        {mobileView ?  <MobileFooter/> : <Footer/>}
+        <Footer/>
       
     </Container>
   )

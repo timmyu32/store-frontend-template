@@ -5,15 +5,18 @@ import { MdEmail } from "react-icons/md";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { ImInstagram } from "react-icons/im";
 import { Link } from 'react-router-dom';
+import { mobile } from '../responsive';
 
 const Container2 = styled.div`
     background-color: black;
     color: white;
     padding-bottom: 100px;
+    width: 100%;
     a:visited { text-decoration: none; color: darkgray;}
     a:link { text-decoration: none; }color: darkgray;
     a:hover { text-decoration: none; color: darkgray;}
     a:active { text-decoration: none; color: darkgray;}
+    
 `;
 
 const FilterContainer = styled.div`

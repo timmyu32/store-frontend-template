@@ -17,7 +17,10 @@ const Container = styled.div`
     a:link { text-decoration: none; }color: white;
     a:hover { text-decoration: none; color: white;}
     a:active { text-decoration: none; color: white;}
-    width: 100%;    
+    width: 100%;   
+    ${mobile({
+        display:'none'
+    })} 
 `;
 
 const Logo = styled.h1``;

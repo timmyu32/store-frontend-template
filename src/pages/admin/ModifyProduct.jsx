@@ -44,7 +44,7 @@ const ModifyProduct = () => {
         event.preventDefault();
         setLoading(true)
         const productID = window.location.pathname.split('/')[3]
-        const res = await axios.put('http://127.0.0.1:8000/api/product/modify/'+productID, 
+        const res = await axios.put(process.env.REACT_APP_API_URL + '/api/product/modify/'+productID, 
         {
             data: {
                 title: titleRef.current.value,

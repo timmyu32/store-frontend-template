@@ -40,7 +40,7 @@ const InputContainer = styled.div`
     height: 40px;
     display: flex;
     justify-content: space-between;
-    border: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
     ${mobile({
       marginRight: '10px'
     })} 
@@ -58,7 +58,9 @@ const Input = styled.input`
 `;
 const Button = styled.button`
     flex:1;
+    margin-left: -30px;
     border: none;
+
     background-color: black;
     color: white;
 
@@ -78,7 +80,7 @@ const Newsletter = () => {
 
     console.log(emailRef.current.value)
     try {
-        const res = await axios.post('http://127.0.0.1:8000/api/newsletter/addMember',  
+        const res = await axios.post(process.env.REACT_APP_API_URL + '/api/newsletter/addMember',  
         {
           email: emailRef.current.value,
         });
@@ -101,7 +103,7 @@ const Newsletter = () => {
         <InputContainer>
             <Input ref={emailRef} type='email' placeholder='Enter your email.'/>
             <Button onClick={() => handleClick()}>
-                <RiSendPlaneFill/>
+                <RiSendPlaneFill size={30}/>
             </Button>
         </InputContainer>
         {emailsuccess? <span style={{color:'lightgray'}}>Thank you for subscribing!</span>: <></>}

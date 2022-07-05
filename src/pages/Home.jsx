@@ -6,13 +6,14 @@ import Categories from '../components/Categories'
 import Products from '../components/Products'
 import Newsletter from '../components/Newsletter'
 import Footer from '../components/Footer'
+import MobileFooter from '../components/MobileFooter'
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 import { showPopUp } from '../redux/userRedux'
 import Popup from '../components/Popup'
 import styled from 'styled-components'
-import MobileFooter from '../components/MobileFooter'
+{}
 
 
 const Button = styled.button`
@@ -75,7 +76,7 @@ const Home = () => {
         <Link to={'/products'}>
         <Button>Continue</Button>
         </Link>
-        {mobileView ?  <MobileFooter/> : <Footer/>}
+        {mobileView ? <MobileFooter/> : <Footer/>}
         
     </div>
   )
