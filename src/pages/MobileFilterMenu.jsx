@@ -1,17 +1,10 @@
 
 import styled from 'styled-components';
-import Navbar from '../components/Navbar';
-import Announcement from '../components/Announcement';
-// import Products from '../components/Products';
-import Newsletter from '../components/Newsletter';
-import Footer from '../components/Footer';
-import DetailedProducts from '../components/DetailedProducts';
 import { useState, useEffect } from 'react';
+import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
-import { mobile } from '../responsive';
 import { Link } from 'react-router-dom';
-import { HiMenu } from "react-icons/hi";
 import { IoCloseSharp } from "react-icons/io5";
 
 const Container2 = styled.div`
@@ -67,18 +60,49 @@ const Icon = styled.div`
 
 `;
 
+const HeaderContainer = styled.div`
+    color: darkgray;
+    justify-content: space-between;
+    display: flex;
+    font-size: 24px;
+    padding: 5px;
+`;
+
+const Header = styled.div`
+    font-size: 50px;
+
+`;
+const List = styled.ul`
+    margin-top: 5px;
+    padding: 0;
+    list-style: none;
+
+`;
+
+const ListItem = styled.li`
+    width: 50%;
+    margin-bottom: 10px;
+    color: lightgray;
+    font-size: 20px;
+
+`;
+
 
 const MobileFilterMenu = () => {
     const [colorList, setColorList] = useState([]);
     const [styleList, setStyleList] = useState([]);
     const [sizeList, setSizeList] = useState([]);
+
+    const [colors, setColors] = useState(false);
+    const [styles, setStyles] = useState(false);
+    const [sizes, setSizes] = useState(false);
+    const [dataFetched, setDataFetched] =  useState(false);
     const [filters, setFilters] = useState({});
     const history = useNavigate();
 
     useEffect(() =>{
         window.scrollTo(0, 0);
         getMeta();
-        // getQueriedProducts();
     }, []);
 
 
@@ -89,7 +113,7 @@ const MobileFilterMenu = () => {
             setColorList(res.data.colors);
             setStyleList(res.data.styles);
             setSizeList(res.data.sizes);
-
+            setDataFetched(true);
             
             }).catch(err => console.log(err));
         } catch (error) {
@@ -130,31 +154,68 @@ const MobileFilterMenu = () => {
                     </Icon>
                 </Link>
             </div>
-            <Select name="colour" onChange={handleFilter}>
-                    <Option disabled selected>
-                        Colour
-                    </Option>
-                    {colorList.map(color => (<Option>{color}</Option>))}
-                </Select>
-                <Select name="style" onChange={handleFilter}>
-                    <Option disabled selected>
-                        Style
-                    </Option>
-                    {styleList.map(style => (<Option>{style}</Option>))}
-                </Select>
-                <Select name="size" onChange={handleFilter}>
-                    <Option disabled selected>
-                        Size
-                    </Option>
-                    {sizeList.map(size => (<Option>{size}</Option>))}
-                </Select>
-                <Select>
-                    <Option selected>
-                        Newest
-                    </Option>
-                    <Option>Price (asc)</Option>
-                    <Option>Price (decc)</Option>
-                </Select>
+            
+            {dataFetched? 
+            
+            <><HeaderContainer onClick={() => setColors(!colors)}>
+            <Header>Colour.</Header>
+            {colors ? <BiChevronUp/> : <BiChevronDown/>}
+        </HeaderContainer>
+        {colors ? <>
+
+        <List>
+            {colorList.map(color => {
+                return <ListItem key={color} onClick={() => 
+                {
+                    history("/search/" + 'colour'+'=' + color.toLowerCase());
+                    window.location.reload(false);
+                }
+                }>{color}</ListItem>
+            })}
+        </List>
+        </> : <></>}
+
+        <HeaderContainer onClick={() => setSizes(!sizes)}>
+            <Header>Size.</Header>
+            {sizes ? <BiChevronUp/> : <BiChevronDown/>}
+        </HeaderContainer>
+        {sizes ?  <>
+        <List>
+            {sizeList.map(size => {
+                return <ListItem key={size} onClick={() => 
+                {
+                    history("/search/" + 'size'+'=' + size.toLowerCase());
+                    window.location.reload(false);
+                }
+                }>{size}</ListItem>
+            })}
+        </List>
+
+
+        </> : <></>}
+
+        <HeaderContainer onClick={() => setStyles(!styles)}>
+            <Header>Style.</Header>
+            {styles ? <BiChevronUp/> : <BiChevronDown/>}
+        </HeaderContainer>
+        {styles ? <>
+        <List>
+            {styleList.map(style => {
+                return <ListItem key={style} onClick={() => 
+                {
+                    history("/search/" + 'style'+'=' + style.toLowerCase());
+                    window.location.reload(false);
+                }
+                }>{style}</ListItem>
+            })}
+        </List>
+
+
+        </> : <></>}
+            </>
+            
+            :<></>}
+            
         </FilterContainer>
     </Container2>
   )
