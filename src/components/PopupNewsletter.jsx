@@ -104,8 +104,8 @@ const PopupNewsletter = () => {
                 <RiSendPlaneFill style={{backgroundColor:'black'}} size={30}/>
             </Button>
         </InputContainer>
-        {emailsuccess? <span style={{color:'lightgray'}}>Thank you for subscribing!</span>: <></>}
-        {emailFailure? <span style={{color:'red'}}>Something went wrong...try again.</span>: <></>}
+        {emailsuccess? <p style={{color:'lightgray'}}>Thank you for subscribing!</p>: <></>}
+        {emailFailure? <p style={{color:'red'}}>Something went wrong...try again.</p>: <></>}
 
     </Container>
   )

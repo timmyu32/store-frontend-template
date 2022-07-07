@@ -1,5 +1,5 @@
 // import React from 'react';
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import styled from 'styled-components';
 import { BiSearchAlt2 } from "react-icons/bi";
 import { FiShoppingCart } from "react-icons/fi";

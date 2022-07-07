@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
+// import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import React, { useState, useEffect, useRef } from 'react';
 import axios from "axios";
 import { Link } from "react-router-dom";

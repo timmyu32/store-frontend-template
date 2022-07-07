@@ -67,6 +67,8 @@ const Prices = styled.div`
 const Image = styled.img`
     height: 75%;
     z-index: 2;
+    transition: all 0.69s ease;
+
 
 `;
 
@@ -99,6 +101,7 @@ const Product = ({item}) => {
     const dispatch = useDispatch();
     const [quantity, setQuantity] = useState(0);
     const [isItemInCart, setIsItemInCart] = useState(false);
+    const [showImg, setShowImg] = useState(item.img)
     const itemsInCart = useSelector(state => state.cart.itemsInCart);
 
 
@@ -113,6 +116,15 @@ const Product = ({item}) => {
 
     }
 
+    const hover = () => {
+        setShowImg(item.img2)
+      }
+      
+      const unhover = () => {
+        setShowImg(item.img)
+
+      }
+
     const handleClick = () => {
         setIsItemInCart(true);
         var price = item.discountedPrice 
@@ -124,8 +136,8 @@ const Product = ({item}) => {
       }
 
   return (
-    <Container>
-        <Image src={item.img}/>
+    <Container onMouseOver={()=> hover()} onMouseOut={() => unhover()}>
+        <Image  src={showImg}/>
         <Prices>
             <p>{item.title.length <= 18 ? item.title : item.title.substring(0, 22) + '...' }</p>
 

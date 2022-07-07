@@ -8,10 +8,10 @@
     height: 100px;
     justify-content: space-between;
     transition: all ease 0.2s;
-    a:visited { text-decoration: none; color: grey;}
-    a:link { text-decoration: none; }color: grey;
-    a:hover { text-decoration: none; color: grey;}
-    a:active { text-decoration: none; color: grey;}
+    a:visited { text-decoration: none; color: #3e50b3;}
+    a:link { text-decoration: none; }color: #3e50b3;
+    a:hover { text-decoration: none; color: #3e50b3;}
+    a:active { text-decoration: none; color: #3e50b3;}
 
 
     &:hover{
@@ -28,7 +28,7 @@
         .title{
             font-weight: bold;
             font-size: 14px;
-            color: rgb(172, 167, 167);
+            color: #3e50b3;
         }
 
         .counter{

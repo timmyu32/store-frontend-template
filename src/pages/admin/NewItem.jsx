@@ -225,7 +225,7 @@ const NewItem = () => {
             <h3>Choose up to 4 High-Definition square photos</h3>
             <div className="fileInput">
               <span><label>1 </label><input required type="file" onChange={onImageChange1} accept="image/*" /></span>
-              <span><label>2 </label><input type="file" onChange={onImageChange2} accept="image/*" /></span>
+              <span><label>2 </label><input required type="file" onChange={onImageChange2} accept="image/*" /></span>
               <span><label>3 </label><input type="file" onChange={onImageChange3} accept="image/*" /></span>
               <span><label>4 </label><input type="file" onChange={onImageChange4} accept="image/*" /></span>
             </div>
