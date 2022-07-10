@@ -76,7 +76,6 @@ const ProductList = (props) => {
     useEffect(() =>{
         window.scrollTo(0, 0);
         getMeta();
-        // getQueriedProducts();
     }, []);
 
 

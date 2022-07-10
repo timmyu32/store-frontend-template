@@ -96,7 +96,7 @@ const Footer = () => {
   return (
     <Container>
         <Left>
-            <Logo>TallgrassVintage.</Logo>
+            <Logo>ClothesByDre.</Logo>
             <Desc>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus 
                 exercitationem reprehenderit dolorem magnam sint officiis nobis officia dolores qui 
@@ -128,6 +128,8 @@ const Footer = () => {
                         </Link>                    
                     </ListItem>
                 <ListItem>Terms </ListItem>
+                <ListItem><a style={{color:'white'}} href="https://www.shmyy.co">Store Powered by Shmyy.co</a> </ListItem>
+
             </List>
         </Center>
         <Right>

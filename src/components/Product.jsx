@@ -96,6 +96,21 @@ const Icon = styled.div`
     }
 `;
 
+const SoldContainer = styled.div`
+    height: fit-content;
+    width: fit-content;
+    background-color: rgba(246, 180, 180, 0.85);
+`;
+
+const Sold = styled.h1`
+    color: #ad3c3c;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+
+`;
 
 const Product = ({item}) => {
     const dispatch = useDispatch();
@@ -157,7 +172,9 @@ const Product = ({item}) => {
         
 
         <Info>
-            <Icon onClick={handleClick} style={ isItemInCart || isItemAlreadyInCart(itemsInCart, item.id) ? {pointerEvents:'none', color: 'white', backgroundColor: 'teal'} : {color: 'black'}} >
+
+            {!item.isSold ? <>
+                <Icon onClick={handleClick} style={ isItemInCart || isItemAlreadyInCart(itemsInCart, item.id) ? {pointerEvents:'none', color: 'white', backgroundColor: 'teal'} : {color: 'black'}} >
                 <FiShoppingCart />
             </Icon>
             <Link to={'/product/' +item.id}>
@@ -165,6 +182,15 @@ const Product = ({item}) => {
                     <BiSearchAlt2/>
                 </Icon>
             </Link>
+            </>:<>
+            <Link to={'/product/' +item.id}>
+                <SoldContainer>
+                    <Sold>SOLD</Sold>
+                </SoldContainer>
+            </Link>
+
+            </>}
+            
 
         </Info>
     </Container>

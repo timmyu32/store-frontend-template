@@ -276,6 +276,7 @@ const Cart = () => {
             //   console.log(res.data)
             //   seXact(res.data.tranaction);
             //   console.log(res.data.tranaction);
+              const res2 = await axios.put(process.env.REACT_APP_API_URL + '/api/product/mark-as-sold/', {IDs:cart.itemsInCart});
               sendOrderDetails(res)
 
               dispatch(emptyCart())

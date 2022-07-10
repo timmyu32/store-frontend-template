@@ -81,15 +81,31 @@ const Button = styled.button`
     transition: all 0.5s ease;
     cursor: pointer;
     font-weight: 600;
+    color: black;
+
     
     &:hover{
-        background-color: teal;
         color: white;
+        background-color: black;
     }
 
 `;
 
+const SoldContainer = styled.div`
+    height: fit-content;
+    width: fit-content;
+    background-color: rgba(246, 180, 180, 0.85);
+`;
 
+const Sold = styled.h1`
+    color: #ad3c3c;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+
+`;
 
 const Product = (props) => {
     const [data, setData] = useState({});
@@ -199,9 +215,15 @@ const Product = (props) => {
             </FilterContainer>
 
             <AddContainer>
-                <Button style={ isItemInCart || isItemAlreadyInCart(itemsInCart, data.id)  ? {pointerEvents:'none', color: 'white', backgroundColor: 'teal'} : {color: 'black'}} 
+                {!data.isSold ? 
+                <Button style={ isItemInCart || isItemAlreadyInCart(itemsInCart, data.id)  ? {pointerEvents:'none', color: 'white', backgroundColor: 'black'} : null} 
                 
                 onClick={() => handleClick()}>{isItemInCart || isItemAlreadyInCart(itemsInCart, data.id)  ? 'ADDED TO CART' : 'ADD TO CART' }</Button>
+                :
+                <SoldContainer>
+                    <Sold>SOLD</Sold>
+                </SoldContainer>
+                }
             </AddContainer>
         </InfoContainer>
 

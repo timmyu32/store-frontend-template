@@ -40,7 +40,7 @@ const NewItem = () => {
   const [img4, setImg4] = useState(noImgURL);
   const [rawValue, setRawValue] = useState(' ');
   const [origP, setorigP] = useState(0);
-  const [discP, setdiscP] = useState(0);
+  const [discP, setdiscP] = useState(null);
   const [firebaseImgURL1, setFirebaseImgURL1] = useState([])
   const [firebaseImgURL2, setFirebaseImgURL2] = useState([])
   const [firebaseImgURL3, setFirebaseImgURL3] = useState([])
@@ -61,6 +61,8 @@ const NewItem = () => {
   const [file2, setfile2] = useState(null);
   const [file3, setfile3] = useState(null);
   const [file4, setfile4] = useState(null);
+
+  const [firebasePaths, setFirebasPaths] = useState([])
 
 
 
@@ -150,6 +152,7 @@ const NewItem = () => {
     if(img1 != noImgURL){
       const storage = getStorage(app);
       const storageRef = ref(storage, id + '/P1_' + fileName1);
+      setFirebasPaths(firebasePaths.push(id + '/P1_' + fileName1))
       await uploadBytes(storageRef, file1).then(async (snapshot) => {
        await getDownloadURL(snapshot.ref).then(res =>{imgs.push(res)})
       });
@@ -157,6 +160,8 @@ const NewItem = () => {
     if(img2 != noImgURL){
       const storage = getStorage(app);
       const storageRef = ref(storage, id + '/P2_' +  fileName2);
+      setFirebasPaths(firebasePaths.push(id + '/P2_' + fileName2))
+
       await uploadBytes(storageRef, file2).then(async (snapshot) => {
         await getDownloadURL(snapshot.ref).then(res =>{imgs.push(res)})
       });
@@ -164,6 +169,8 @@ const NewItem = () => {
     if(img3 != noImgURL){
       const storage = getStorage(app);
       const storageRef = ref(storage, id + '/P3_' + fileName3);
+      setFirebasPaths(firebasePaths.push(id + '/P3_' + fileName3))
+
       await uploadBytes(storageRef, file3).then(async (snapshot)  => {
         await getDownloadURL(snapshot.ref).then(res =>{imgs.push(res)})
       });
@@ -171,6 +178,8 @@ const NewItem = () => {
     if(img4 != noImgURL){
       const storage = getStorage(app);
       const storageRef = ref(storage, id + '/P4_' + fileName4);
+      setFirebasPaths(firebasePaths.push(id + '/P4_' + fileName4))
+
       await uploadBytes(storageRef, file4).then(async (snapshot) => {
        await getDownloadURL(snapshot.ref).then(res =>{imgs.push(res)})
       });
@@ -189,7 +198,8 @@ const NewItem = () => {
       Style: styles,
       Size: sizeRef.current.value.trim(),
       Description: descriptionRef.current.value.substring(0,250).trim(),
-      Images: imgs
+      Images: imgs,
+      firebasePaths: firebasePaths
     }
     
     const res = axios.post(process.env.REACT_APP_API_URL + "/api/product/create",
