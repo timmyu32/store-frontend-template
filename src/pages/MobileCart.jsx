@@ -345,8 +345,12 @@ const MobileCart = () => {
                 <SummaryItemPrice>$4.65</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
-                <SummaryItemText>Shipping Discount</SummaryItemText>
-                <SummaryItemPrice>-$4.65</SummaryItemPrice>
+                {discountAmount == null ? <></> : 
+                discountAmount == 'incorrect code' ?<></>:
+                <>
+                <SummaryItemText>Discount</SummaryItemText>
+                <SummaryItemPrice>${roundToTwo(cart.total - (cart.total * ((100-discountAmount)/100) )) }</SummaryItemPrice>
+                </>}
             </SummaryItem>
             <SummaryItem>
                 <SummaryItemText>

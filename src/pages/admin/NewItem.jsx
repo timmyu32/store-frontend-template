@@ -188,7 +188,7 @@ const NewItem = () => {
 
     
     const data = {
-      ID: id,
+      ID: id.toString(),
       Title: titleRef.current.value.trim(),
       OriginalPrice: origP,
       DiscountedPrice: discP,
@@ -199,11 +199,13 @@ const NewItem = () => {
       Size: sizeRef.current.value.trim(),
       Description: descriptionRef.current.value.substring(0,250).trim(),
       Images: imgs,
-      firebasePaths: firebasePaths
+      firebasePaths: firebasePaths,
+      isSold: false,
+      
     }
-    
+    const timestamp = new Date().getTime()
     const res = axios.post(process.env.REACT_APP_API_URL + "/api/product/create",
-      {data: data}
+      {ID:id.toString(), data: data, Timestamp: timestamp}
     ).then(result => {
       setUploading(false);
       setProductLive(true);

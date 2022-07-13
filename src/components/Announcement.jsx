@@ -20,7 +20,7 @@ const Container = styled.div`
 const Announcement = () => {
   return (
     <Container>
-        DEAL INCOMING! Free Shipping on Orders Over $20!
+        DEAL INCOMING! Code NEW10 for 10% OFF!
     </Container>
   )
 }

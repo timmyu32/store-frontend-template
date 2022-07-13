@@ -64,6 +64,24 @@ const Icon = styled.div`
 const Option = styled.option`
 
 `;
+const Button = styled.button`
+    width: 30%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    font-weight: 600;
+    justify-content: center;
+
+
+    &:hover{
+        background-color: white;
+        color: black;
+    }
+`;
 
 
 const ProductList = (props) => {
@@ -71,6 +89,8 @@ const ProductList = (props) => {
     const [styleList, setStyleList] = useState([]);
     const [sizeList, setSizeList] = useState([]);
     const [filters, setFilters] = useState({});
+    const [lmt, setLimit] = useState(0)
+    const [clickIndex, setClickIndex] = useState(0)
     const history = useNavigate();
 
     useEffect(() =>{
@@ -112,6 +132,10 @@ const ProductList = (props) => {
         window.location.reload(false);
     };
 
+    const handleClick = () => {
+        setClickIndex(clickIndex+1);
+        setLimit(48 + (24 * clickIndex));
+    }
 
     const mql = window.matchMedia('(max-width: 480px)');
   
@@ -169,19 +193,27 @@ const ProductList = (props) => {
             </Select>
             </Container2>
             <Container2>
-                <Filter><FilterText>Sort Products</FilterText></Filter>
+                {/* <Filter><FilterText>Sort Products</FilterText></Filter>
                 <Select>
                     <Option selected>
                         Newest
                     </Option>
                     <Option>Price (asc)</Option>
                     <Option>Price (decc)</Option>
-                </Select>
+                </Select> */}
             </Container2>
         </FilterContainer>
         <div className="dpc" style={{padding:'20px'}}>
-            <DetailedProducts limit={0}/>
+            {lmt == 0?
+            <DetailedProducts limit={24}/>
+            :
+            <DetailedProducts limit={lmt}/>
+            }    
         </div>  
+        <div className="butn" style={{textAlign:'center'}}>
+            <Button onClick={() => handleClick()}>Show More.</Button>
+        </div>
+
         <Newsletter/>
         {mobileView ?  <MobileFooter/> : <Footer/>}
 

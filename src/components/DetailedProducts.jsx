@@ -16,11 +16,12 @@ const Container = styled.div`
 
 const DetailedProducts = (props) => {
     const [data, setData] = useState([]);
+    const [limit_, setLimit] = useState(props.limit)
     
 
     useEffect(() =>{
         getItems();
-    }, []);
+    }, [props.limit]);
 
     const getItems = async () => {
         // console.log(window.location);

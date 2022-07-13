@@ -134,10 +134,10 @@ const Footer = () => {
         </Center>
         <Right>
             <Title>Contact</Title>
-            <ContactItem>
+            {/* <ContactItem>
                 <IoLocationSharp style={{marginRight:"10px"}}/>
                 123 Address Street, City NY, 01234
-            </ContactItem>
+            </ContactItem> */}
             <ContactItem>
                 <MdEmail style={{marginRight:"10px"}}/>
                 contact@email.com

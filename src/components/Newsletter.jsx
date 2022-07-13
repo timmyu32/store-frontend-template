@@ -27,7 +27,6 @@ const Title = styled.h1`
 const Desc = styled.div`    
     font-size: 24px;
     font-weight: 300;
-    margin-bottom: 20px;   
     color: white; 
     ${mobile({
       marginLeft: '20px'
@@ -35,6 +34,15 @@ const Desc = styled.div`
 
 `;
 
+const Sub = styled.div`    
+    font-size: 20px;
+    font-weight: 300;
+    color: white; 
+    ${mobile({
+      marginLeft: '20px'
+    })} 
+
+`;
 const InputContainer = styled.div`
     width: 50%;
     height: 40px;
@@ -100,7 +108,9 @@ const Newsletter = () => {
   return (
     <Container>
         <Title>Newsletter.</Title>
-        <Desc>Join to get updates on new arrivals and sales.</Desc>
+        <Desc>15% off your first order.</Desc>
+        <Sub>Join to get updates on new arrivals and sales.</Sub>
+
         <InputContainer>
             <Input ref={emailRef} type='email' placeholder='Enter your email.'/>
             <Button onClick={() => handleClick()}>
