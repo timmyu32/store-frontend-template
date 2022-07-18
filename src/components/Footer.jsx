@@ -96,7 +96,7 @@ const Footer = () => {
   return (
     <Container>
         <Left>
-            <Logo>ClothesByDre.</Logo>
+            <Logo>NIERJC.</Logo>
             <Desc>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus 
                 exercitationem reprehenderit dolorem magnam sint officiis nobis officia dolores qui 

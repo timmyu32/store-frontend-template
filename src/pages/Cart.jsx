@@ -386,14 +386,16 @@ const Cart = () => {
                     </SummaryItem>
                     {user.currentUser && user.currentUser.message == 'user logged in' ?
                     <StripeCheckout
-                    name="GeminiLogisticz"
+                    name="STORE_NAME_HERE"
                     email={user.currentUser.user.email}
                     billingAddress
                     shippingAddress
                     description="thank you for your business"
                     amount={typeof discountAmount == 'number' ? roundToTwo(cart.total * ((100-discountAmount)/100) )*100 : roundToTwo(cart.total)*100 }
                     token={onToken}
-                    stripeKey={KEY}>
+                    stripeKey={KEY}
+                    alipay={true}
+                    googlepay>
                     <Button>PROCEED TO CHECK-OUT</Button>
                     </StripeCheckout>
                     

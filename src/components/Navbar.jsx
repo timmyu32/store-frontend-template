@@ -184,7 +184,7 @@ const Navbar = () => {
         </Left>
         <Center>
           <Link to='/'>
-            <Logo>ClothesByDre.</Logo>
+            <Logo>NIERJC.</Logo>
           </Link>
         </Center>
         <Right>
