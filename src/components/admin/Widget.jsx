@@ -58,9 +58,13 @@ const Widget = ({type}) => {
             };
             break;
             case "balance":
+            const res4 = axios.get(process.env.REACT_APP_API_URL + "/api/strpe/balance/").then(result => {
+                setAmount(result.data.pending_balance);
+                setDataFetched(true);
+            })
 
             data = {
-                title: 'BALANCE',
+                title: 'BALANCE (pending)',
                 isMoney: true,
                 link: 'See all users',
                 icon: <FaBalanceScale className='icon'/>

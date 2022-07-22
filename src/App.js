@@ -24,6 +24,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const user = useSelector(state => state.user);
+  // console.log(user)
+  // const x = user.currentUser.user?.isAdmin != undefined
+  // console.log(x)
   const mql = window.matchMedia('(max-width: 480px)');
 
   let mobileView = mql.matches;
@@ -53,7 +56,7 @@ function App() {
           <Route path='/search/:term' exact element={<ProductList />} />
           <Route path='/mobile-menu' exact element={<MobileFilterMenu />} />
 
-          {user.currentUser && user.currentUser.user.isAdmin?
+          {user.currentUser && user.currentUser.user?.isAdmin == true ?
           <>
           <Route path='/admin' exact element={<AdminHome/>} />
           <Route path='/admin/list/:listType' exact element={<List/>} />

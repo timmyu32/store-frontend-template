@@ -59,7 +59,7 @@ const ShipItem = () => {
   const handleClick = (event) => {
   
 
-    if (trackingNum1.current.value == trackingNum2.current.value && trackingNum1.current.value.length > 0) {
+    if (trackingNum1.current.value == trackingNum2.current.value && trackingNum1.current.value.length > 0 && !marked) {
         
         const orderID = window.location.pathname.split('/')[3]
         const res = axios.put(process.env.REACT_APP_API_URL + "/api/order/edit/"+orderID).then(result => {
@@ -67,7 +67,7 @@ const ShipItem = () => {
         })
         
     }else{
-        setError(true)
+        !marked && setError(true)
     }
     event.preventDefault();
 
@@ -128,7 +128,11 @@ const ShipItem = () => {
                                     </div>
                                     {error &&
                                     <p style={{color: 'red'}}>Tracking Numbers do not match</p>}
+                                    {marked ?
+                                    <button style={{'cursor':"not-allowed"}}>MARK AS SHIPPED AND NOTIFY BUYER</button>
+                                    :
                                     <button>MARK AS SHIPPED AND NOTIFY BUYER</button>
+                                    }
 
                                 </form>
                             </div>

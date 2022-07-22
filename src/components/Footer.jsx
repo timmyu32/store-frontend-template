@@ -76,12 +76,22 @@ const List = styled.ul`
     list-style: none;
     display: flex;
     flex-wrap: wrap;
+    a:visited { text-decoration: none; color: white;}
+    a:link { text-decoration: none; }color: white;
+    a:hover { text-decoration: none; color: white;}
+    a:active { text-decoration: none; color: white;}
+    color: white;
 
 `;
 
 const ListItem = styled.li`
     width: 50%;
     margin-bottom: 10px;
+    a:visited { text-decoration: none; color: white;}
+    a:link { text-decoration: none; }color: white;
+    a:hover { text-decoration: none; color: white;}
+    a:active { text-decoration: none; color: white;}
+    color: white;
 
 `;
 
@@ -118,16 +128,15 @@ const Footer = () => {
             <Title>Useful Links</Title>
             <List>
                     <ListItem style={{textDecoration:'underline'}}>
-                        <Link to='/'>
+                        <Link to='/' style={{'color':'white'}}>
                             Home
                         </Link>
                     </ListItem>
                     <ListItem style={{textDecoration:'underline'}}>
-                        <Link to='/cart'>
+                        <Link to='/cart'  style={{'color':'white'}}>
                             Cart
                         </Link>                    
                     </ListItem>
-                <ListItem>Terms </ListItem>
                 <ListItem><a style={{color:'white'}} href="https://www.shmyy.co">Store Powered by Shmyy.co</a> </ListItem>
 
             </List>

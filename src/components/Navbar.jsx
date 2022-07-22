@@ -188,7 +188,7 @@ const Navbar = () => {
           </Link>
         </Center>
         <Right>
-        {user.currentUser && user.currentUser.user.isAdmin? 
+        {user.currentUser && user.currentUser.user?.isAdmin == true ? 
           <Link to='/admin'>
             <MenuItem style={{textDecoration: 'underline'}}>ADMIN SITE</MenuItem> 
           </Link>
