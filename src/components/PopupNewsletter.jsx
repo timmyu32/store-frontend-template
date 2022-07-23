@@ -70,7 +70,7 @@ const Button = styled.button`
 
 const PopupNewsletter = () => {
   const emailRef = useRef(null);
-  const [emailsuccess, setEmailSuccess] = useState(false)
+  const [emailSuccess, setemailSuccess] = useState(false)
   const [emailFailure, setEmailFailure] = useState(false)
 
 
@@ -82,7 +82,7 @@ const PopupNewsletter = () => {
         {
           email: emailRef.current.value,
         });
-        setEmailSuccess(true);
+        setemailSuccess(true);
         setEmailFailure(false)   ;  
         emailRef.current.value = '';
 
@@ -104,7 +104,7 @@ const PopupNewsletter = () => {
                 <RiSendPlaneFill style={{backgroundColor:'black'}} size={30}/>
             </Button>
         </InputContainer>
-        {emailsuccess? <p style={{color:'lightgray'}}>Thank you for subscribing!</p>: <></>}
+        {emailSuccess? <p style={{color:'lightgray'}}>Thank you for subscribing!</p>: <></>}
         {emailFailure? <p style={{color:'red'}}>Something went wrong...try again.</p>: <></>}
 
     </Container>

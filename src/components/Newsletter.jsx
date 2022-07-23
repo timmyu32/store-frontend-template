@@ -81,7 +81,7 @@ const Button = styled.button`
 
 const Newsletter = () => {
   const emailRef = useRef(null);
-  const [emailsuccess, setEmailSuccess] = useState(false)
+  const [emailSuccess, setemailSuccess] = useState(false)
   const [emailFailure, setEmailFailure] = useState(false)
 
 
@@ -93,7 +93,7 @@ const Newsletter = () => {
         {
           email: emailRef.current.value,
         });
-        setEmailSuccess(true);
+        setemailSuccess(true);
         setEmailFailure(false)   ;  
         emailRef.current.value = '';
 
@@ -117,7 +117,7 @@ const Newsletter = () => {
                 <RiSendPlaneFill size={30}/>
             </Button>
         </InputContainer>
-        {emailsuccess? <span style={{color:'lightgray'}}>Thank you for subscribing!</span>: <></>}
+        {emailSuccess? <span style={{color:'lightgray'}}>Thank you for subscribing!</span>: <></>}
         {emailFailure? <span style={{color:'red'}}>Something went wrong...try again.</span>: <></>}
 
     </Container>

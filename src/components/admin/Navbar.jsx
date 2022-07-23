@@ -1,8 +1,4 @@
 import './Navbar.scss'
-import { BiSearchAlt2 } from "react-icons/bi";
-import { MdNotificationsActive } from "react-icons/md";
-import { FiMessageSquare } from "react-icons/fi";
-import { AiOutlineUnorderedList } from "react-icons/ai";
 import { FaClipboardList, FaBalanceScale } from "react-icons/fa";
 import { useState, useEffect } from 'react';
 import axios from 'axios';

@@ -135,7 +135,7 @@ const Product = ({item}) => {
         setShowImg(item.img2)
       }
       
-      const unhover = () => {
+      const unHover = () => {
         setShowImg(item.img)
 
       }
@@ -151,7 +151,7 @@ const Product = ({item}) => {
       }
 
   return (
-    <Container onMouseOver={()=> hover()} onMouseOut={() => unhover()}>
+    <Container onMouseOver={()=> hover()} onMouseOut={() => unHover()}>
         <Image  src={showImg}/>
         <Prices>
             <p>{item.title.length <= 18 ? item.title : item.title.substring(0, 22) + '...' }</p>

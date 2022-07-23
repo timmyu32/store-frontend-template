@@ -1,12 +1,10 @@
 import './Widget.scss'
 
-import { BiUpArrowAlt, BiDownArrowAlt } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { FaClipboardList, FaBalanceScale } from "react-icons/fa";
 import axios from 'axios'
 import { MdAttachMoney } from "react-icons/md";
 import { useRef, useState } from 'react';
-import { useEffect } from 'react';
 
 
 const Widget = ({type}) => {
@@ -53,7 +51,7 @@ const Widget = ({type}) => {
             data = {
                 title: 'EARNINGS (total)',
                 isMoney: true,
-                link: 'Inspect earnings',
+                link: 'Total Earnings',
                 icon: <MdAttachMoney className='icon'/>
             };
             break;
@@ -66,7 +64,7 @@ const Widget = ({type}) => {
             data = {
                 title: 'BALANCE (pending)',
                 isMoney: true,
-                link: 'See all users',
+                link: '*Bank account payouts are on a rolling 2-day basis',
                 icon: <FaBalanceScale className='icon'/>
             };
             break;

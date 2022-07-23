@@ -15,12 +15,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    rgba(255,255,255,0.9),
-    rgba(255,255,255,0.9)
-  ),  
-  url('https://media-pictures.depop.com/b0/12546449/1165291087_d003df74d1e34b408a4d7d9e6d95f825/U1.jpg');
-    center;
+  background-color: rgba(255,255,255,0.9);
   `;
 
 const Wrapper = styled.div`
@@ -59,6 +54,8 @@ const Button = styled.button`
     border: none;
     padding: 15px 20px;
     cursor: pointer;
+    color: black;
+
 `
 
 const Error = styled.span`
@@ -126,12 +123,12 @@ const SignIn = () => {
   return (
     <Container>
       <Wrapper>
-        <Title>LOGIN TO TallgrassVintage STORE</Title>
+        <Title>LOGIN TO {process.env.REACT_APP_DEPOP_SHOP} STORE</Title>
         <Form id='form'>
           <Input ref={uNameRef} placeholder="Username"/>
           <Input type='password' ref={pWordRef} placeholder="Password"/>
           {error && <Error>Incorrect Credentials</Error>}
-          <RegisterLink onClick={() => history('/register')}>Don't have an account? Cick here to register.</RegisterLink>
+          <RegisterLink onClick={() => history('/register')}>Don't have an account? Click here to register.</RegisterLink>
           <Button onClick={() =>handleClick()}>Login</Button>
         </Form>
       </Wrapper>

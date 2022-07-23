@@ -26,7 +26,6 @@
         
         
         button{
-        background-color: #7451f8;
         color: white;
         font-size: 14px;
         font-weight: bold;
@@ -37,7 +36,6 @@
         transition: 0.25s all ease;
         
         &:hover{
-            color: #7451f8;
             background-color: gray;
         }
         }
@@ -48,7 +46,7 @@
         background-color: rgb(228, 228, 228);
         border-radius: 5px;
         padding: 4px;
-        color: rgb(41, 160, 41)
+        color: gray;
         }
     
     }

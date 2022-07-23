@@ -184,7 +184,7 @@ const Navbar = () => {
         </Left>
         <Center>
           <Link to='/'>
-            <Logo>NIERJC.</Logo>
+            <Logo>{process.env.REACT_APP_DEPOP_SHOP}.</Logo>
           </Link>
         </Center>
         <Right>

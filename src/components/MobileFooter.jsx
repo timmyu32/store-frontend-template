@@ -77,7 +77,7 @@ const MobileFilterMenu = () => {
                 width: '100%',
 
             }}>
-                <Title>ClothesByDre.</Title>
+                <Title>{process.env.REACT_APP_DEPOP_SHOP}.</Title>
                 
                 <ImInstagram color='#E4405F' size={30}/>
             </div>
@@ -117,11 +117,11 @@ const MobileFilterMenu = () => {
                 {contact ? <BiChevronUp/>: <BiChevronDown/>}
             </HeaderContainer>
             {contact ? <>
-            <List>
+            {/* <List>
                 <ListItem>
                 <IoLocationSharp style={{marginRight:"10px"}}/>
                 123 Address Street, City NY, 01234
-            </ListItem>
+            </ListItem> */}
             <ListItem>
                 <MdEmail style={{marginRight:"10px"}}/>
                 contact@email.com

@@ -15,10 +15,8 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    rgba(255,255,255,0.9),
-    rgba(255,255,255,0.9)
-  ),  
+  background-color: rgba(255,255,255,0.9);
+
  
   `;
 
@@ -57,6 +55,7 @@ const Button = styled.button`
     border: none;
     padding: 15px 20px;
     cursor: pointer;
+    color: black;
 `
 const AdminLink = styled.a`
     &:visited{
@@ -169,7 +168,7 @@ const Register = (props) => {
     <div>
       <Container>
         <Wrapper>
-          <Title>CREATE ACCOUNT WITH TallgrassVintage</Title>
+          <Title>CREATE ACCOUNT WITH {process.env.REACT_APP_DEPOP_SHOP}</Title>
           <Form id='form'>
             <Input ref={fNameRef} placeholder="First Name"/>
             <Input ref={lNameRef} placeholder="Last Name"/>

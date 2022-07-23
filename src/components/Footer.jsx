@@ -106,7 +106,7 @@ const Footer = () => {
   return (
     <Container>
         <Left>
-            <Logo>NIERJC.</Logo>
+            <Logo>{process.env.REACT_APP_DEPOP_SHOP}.</Logo>
             <Desc>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus 
                 exercitationem reprehenderit dolorem magnam sint officiis nobis officia dolores qui 

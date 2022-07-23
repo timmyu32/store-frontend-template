@@ -401,7 +401,7 @@ const Cart = () => {
                     
                     :
               
-                    <Button onClick={() => history('/login')}>LGOING/REGISTER TO CHECK-OUT</Button>
+                    <Button onClick={() => history('/login')}>LOGIN/REGISTER TO CHECK-OUT</Button>
                     }
 
                 </Summary>

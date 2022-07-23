@@ -30,6 +30,7 @@ function App() {
   const mql = window.matchMedia('(max-width: 480px)');
 
   let mobileView = mql.matches;
+  document.title = process.env.REACT_APP_DEPOP_SHOP +'.'
 
 
   return (
