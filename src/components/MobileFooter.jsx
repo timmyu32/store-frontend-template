@@ -117,8 +117,8 @@ const MobileFilterMenu = () => {
                 {contact ? <BiChevronUp/>: <BiChevronDown/>}
             </HeaderContainer>
             {contact ? <>
-            {/* <List>
-                <ListItem>
+            <List>
+            {/* <ListItem>
                 <IoLocationSharp style={{marginRight:"10px"}}/>
                 123 Address Street, City NY, 01234
             </ListItem> */}
